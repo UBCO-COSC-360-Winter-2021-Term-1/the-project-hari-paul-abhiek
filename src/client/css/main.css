@@ -1,12 +1,14 @@
-.carousel-item {
-    width:640px;
-    height: 360px;
-}
+.carousel-inner img {
+    margin: auto;
+  }
 
-#map {
+  #map {
     top: 0; 
     bottom: 0; 
     width: 400px; 
     height: 300px;
 }
-
+.my-custom-row {
+    background-color: bisque;
+    height: 400px;
+}
