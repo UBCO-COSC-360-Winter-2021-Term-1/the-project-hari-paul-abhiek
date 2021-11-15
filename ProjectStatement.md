@@ -3,6 +3,7 @@
 ## Team member selections - list
 - Haris Vidimlic
 - Paul Sciarpelletti
+- Abhiek Bist
 
 ## Provide a description of the project you are going to undertake
 - We will be making a Bike Trails forum for BC, specifically Kelowna
