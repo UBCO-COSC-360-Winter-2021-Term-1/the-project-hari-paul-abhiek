@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Okanagan Bike Trails</title>
-    <script type="text/javascript" src="src/client/js/main.js"></script>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css' rel='stylesheet' />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="src/client/css/main.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-</head>
-
-<body>
-
-    <header id="text-center">
         <nav>
             <div class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="index.html">Okanagan Bike Trails</a>
@@ -42,11 +21,29 @@
                         <li class="nav-item">
                             <a class="nav-link" href="about.php">About</a>
                         </li>
-                        <!-- Add admin when certain user logs in-->
-                        <a href="validateLogin.php" class="btn btn-primary">Login</a>
-                        <!-- Float this button to the right. Replace with logout once clicked-->
+                        
                     </ul>
+                   
+                    <div class="row mx-2">
+                    <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                    <form class= "form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        </li>
+                        <li class="nav-item">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </li>
+                    </form>
+                    <!-- Add admin when certain user logs in-->
+                    <li class="nav-item">
+                        <button class="btn btn-primary">Login</button>
+                    </li>
+                        <!-- Float this button to the right. Replace with logout once clicked-->
+                        <li class="nav-item">
+                        <button class="btn btn-primary">signup</button>
+                        </li>
+                    </ul>
+                    </div>
                 </div>
             </div>
         </nav>
-    </header>
