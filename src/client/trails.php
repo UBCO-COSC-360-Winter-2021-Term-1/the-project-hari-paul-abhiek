@@ -19,10 +19,9 @@
 
 <body>
   <?php
+    $root = $_SERVER["DOCUMENT_ROOT"];
     include 'header.php';
-     include 'db_conn.php';
-    //$root = realpath($_SERVER["DOCUMENT_ROOT"]);
- //require $root.'\\src\\server\\db_conn.php';
+    include $root.'/the-project-hari-paul-abhiek/src/server/db_conn.php';
     ?>
 
 <div class="container">
