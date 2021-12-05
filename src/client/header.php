@@ -31,16 +31,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="index.php">Home</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="trails.html">Trails</a>
+                            <a class="nav-link" href="trails.php">Trails</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="photos.html">Photos</a>
+                            <a class="nav-link" href="photos.php">Photos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="about.php">About</a>
                         </li>
                         <!-- Add admin when certain user logs in-->
                         <a href="validateLogin.php" class="btn btn-primary">Login</a>

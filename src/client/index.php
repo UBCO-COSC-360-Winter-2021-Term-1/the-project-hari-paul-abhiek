@@ -14,13 +14,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
-
+    <?php
+    include 'header.php';
+    ?>
 </head>
 
 <body>
-<?php
-    include 'header.php';
-    ?>
+
     <div class="container">
         <div class="row align-items-start">
             <div class="col">
