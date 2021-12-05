@@ -20,35 +20,42 @@
 <body>
   <?php
     include 'header.php';
-    include 'db_conn.php';
+     include 'db_conn.php';
+    //$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+ //require $root.'\\src\\server\\db_conn.php';
     ?>
 
-
+<div class="container">
     <div class="row">
 
 
     <?php 
-         $sql = "SELECT * FROM `trail`"; 
-         $result = mysqli_query($conn, $sql);
+         $sql = "SELECT * FROM `trails`"; 
+         if($result = mysqli_query($conn, $sql)){
          while($row = mysqli_fetch_assoc($result)){
-          // echo $row['category_id'];
-          // echo $row['category_name'];
           $id = $row['trailId'];
           $trail = $row['trailName'];
-          $desc = $row['desc'];
-          echo 'class="card mx-auto m-3"
-                  <div class="card" style="width: 18rem;">
-                      <img src="img/card-'.$id. '.jpg" class="card-img-top" alt="Card image cap">
-                      <div class="card-body">
-                          <h5 class="card-title"><a href="threadlist.php?catid=' . $id . '">' . $trail . '</a></h5>
-                          <p class="card-text">' . substr($desc, 0, 90). '... </p>
-                          <a href="trails.php?catid=' . $id . '" class="btn btn-primary">View trail</a>
-                      </div>
-                  </div>
-                </div>';
-         } 
+          $desc = $row['description'];
+          echo '<div class="card mx-auto m-3>"
+          <div class="card" style="width: 18rem;">
+              <img src="img/card-'.$id. '.jpg" class="card-img-top" alt="Card image cap">
+              <div class="card-body">
+                  <h5 class="card-title"><a href="threadlist.php?id=' . $id . '">' . $trail . '</a></h5>
+                  <p class="card-text">' . substr($desc, 0, 90). '... </p>
+                  <a href="trails.php?id=' . $id . '" class="btn btn-primary">View trail</a>
+              </div>
+          </div>
+        </div>';
+         }
+         mysqli_free_result($result);
+        }
+        
+        mysqli_close($conn);
+         
+        
          ?> 
-
+    </div>
+    </div>
 
         <!-- <div class="card mx-auto m-3" style="width: 18rem;">
             <img class="card-img-top" src="img//myra-canyon.jpg" alt="Card image cap">
