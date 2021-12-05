@@ -113,11 +113,12 @@ ALTER TABLE `admin`
 
 CREATE TABLE `trails` (
   `trailId` int(11) NOT NULL,
-  `title` varchar(20) NOT NULL,
-  `text` varchar(255) NOT NULL,
-  `image` blob NOT NULL
+  `trailName` varchar(20) NOT NULL,
+  `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `trails`(`trailId`, `trailName`, `description`) VALUES (1,'Myra Canyon Trestles','This 16km stretch will take you over 18 trestles and through two tunnels, all along the edge of a canyon with amazing views of Kelowna and Okanagan Lake. Since this trail was once part of a rail line it is virtually flat with no more than a 2% grade. ');
+INSERT INTO `trails`(`trailId`, `trailName`, `description`) VALUES (2, 'Knox Mountain Park ','Knox Mountain Park is better than ever, with new, mountain bike specific trails that range from fast and flowy wide-open singletrack to big jumps and steep, rocky descents.');
 --
 -- --------------------------------------------------------
 
