@@ -2,10 +2,10 @@
 
 $host = "localhost";
 $database = "project";
-$user = "proj";
-$password = "kIhRJSPLMfQkUD)z";
+$user = "webuser";
+$password = "P@ssw0rd";
 
-$connection = mysqli_connect($host, $user, $password, $database);
+$conn = mysqli_connect($host, $user, $password, $database);
 
 $error = mysqli_connect_error();
 if($error != null)
