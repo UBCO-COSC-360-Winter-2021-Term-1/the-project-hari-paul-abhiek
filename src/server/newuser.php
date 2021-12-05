@@ -1,6 +1,6 @@
 <?php
-    $root = realpath($_SERVER["DOCUMENT_ROOT"]);
-    require $root.'\\src\\server\\validate.php';
+    //$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+    require '/validate.php';
 
     // Create variables for proper image path
     $target_dir = "uploads/";
