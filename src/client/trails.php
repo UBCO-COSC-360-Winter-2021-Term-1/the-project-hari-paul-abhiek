@@ -20,10 +20,37 @@
 <body>
   <?php
     include 'header.php';
+    include 'db_conn.php';
     ?>
 
+
     <div class="row">
-        <div class="card mx-auto m-3" style="width: 18rem;">
+
+
+    <?php 
+         $sql = "SELECT * FROM `trail`"; 
+         $result = mysqli_query($conn, $sql);
+         while($row = mysqli_fetch_assoc($result)){
+          // echo $row['category_id'];
+          // echo $row['category_name'];
+          $id = $row['trailId'];
+          $trail = $row['trailName'];
+          $desc = $row['desc'];
+          echo 'class="card mx-auto m-3"
+                  <div class="card" style="width: 18rem;">
+                      <img src="img/card-'.$id. '.jpg" class="card-img-top" alt="Card image cap">
+                      <div class="card-body">
+                          <h5 class="card-title"><a href="threadlist.php?catid=' . $id . '">' . $trail . '</a></h5>
+                          <p class="card-text">' . substr($desc, 0, 90). '... </p>
+                          <a href="trails.php?catid=' . $id . '" class="btn btn-primary">View trail</a>
+                      </div>
+                  </div>
+                </div>';
+         } 
+         ?> 
+
+
+        <!-- <div class="card mx-auto m-3" style="width: 18rem;">
             <img class="card-img-top" src="img//myra-canyon.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Myra Canyon Trestles</h5>
@@ -161,7 +188,7 @@
                   <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
               </div>
-            </div>
+            </div> -->
     <!-- Footer -->
     <footer class="page-footer font-small bg-light pt-4">
 

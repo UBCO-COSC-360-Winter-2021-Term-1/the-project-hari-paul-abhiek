@@ -20,9 +20,13 @@
 </head>
 
 <body>
-
+<?php
+   // include 'db_conn.php';
+    ?>
     <div class="container">
         <div class="row align-items-start">
+
+
             <div class="col">
                 <!-- Carousel -->
                 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
