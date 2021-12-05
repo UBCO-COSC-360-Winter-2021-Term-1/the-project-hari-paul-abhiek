@@ -1,5 +1,19 @@
 <?php
-require '/db_conn.php';
+ $root = realpath($_SERVER["DOCUMENT_ROOT"]);
+ require $root.'\\src\\server\\db_conn.php';
+$host = "localhost";
+$database = "project";
+$user = "proj";
+$password = "kIhRJSPLMfQkUD)z";
+
+$connection = mysqli_connect($host, $user, $password, $database);
+
+$error = mysqli_connect_error();
+if($error != null)
+{
+  $output = "<p>Unable to connect to database!</p>";
+  exit($output);
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])) {

@@ -18,80 +18,52 @@
 </head>
 
 <body>
-    <header id="text-center">
-        <nav>
-            <div class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="index.html">Okanagan Bike Trails</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="trails.html">Trails</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="photos.html">Photos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <!-- Add admin when certain user logs in-->
-                        <a href="validateLogin.php" class="btn btn-primary">Login</a>
-                        <!-- Float this button to the right. Replace with logout once clicked-->
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+  <?php
+    include 'header.php';
+    ?>
 
     <div class="row">
         <div class="card mx-auto m-3" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <img class="card-img-top" src="img//myra-canyon.jpg" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title">Myra Canyon Trestles</h5>
+              <p class="card-text">This 16km stretch will take you over 18 trestles and through two tunnels, all along the edge of a canyon with amazing views of Kelowna and Okanagan Lake. Since this trail was once part of a rail line it is virtually flat with no more than a 2% grade. </p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
     
           <div class="card mx-auto m-3" style="width: 18rem;">
-          <img class="card-img-top" src="..." alt="Card image cap">
+          <img class="card-img-top" src="img//knox-mtn1.jpg" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title">Know Mountain Park</h5>
+              <p class="card-text">Knox Mountain Park is better than ever, with new, mountain bike specific trails that range from fast and flowy wide-open singletrack to big jumps and steep, rocky descents.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
     
           <div class="card mx-auto m-3" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <img class="card-img-top" src="img//crawford.jpg" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title">Myra-Bellevue Park(Crawford))</h5>
+              <p class="card-text">Myra-Bellevue Provincial Park offers cross country, all mountain and downhill as it bodes the largest network of trails in the Central Okanagan.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
     
           <div class="card mx-auto m-3" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <img class="card-img-top" src="img//gillard.jpg" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title">Gillard</h5>
+              <p class="card-text">Gillard is a difficult and technically demanding downhill trail best suited for strong intermediate riders </p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
     
           <div class="card mx-auto m-3" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <img class="card-img-top" src="img//powers.jpg" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title">Powers Creek</h5>
+              <p class="card-text">Another downhill trail that bodes a fun group of trails that follow the ridge high above Powers Creek Canyon. Great views and fast, flowy, descents.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
@@ -99,10 +71,10 @@
 
     <div class="row">
         <div class="card mx-auto m-3" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <img class="card-img-top" src="img//powers.jpg" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title">Powers Creek</h5>
+              <p class="card-text">A downhill trail with lots of man made features like a suspension bridge, a spiralling ramp, teeter-totters, skinnies.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>

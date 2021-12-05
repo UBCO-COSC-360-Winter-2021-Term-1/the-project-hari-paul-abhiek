@@ -1,37 +1,31 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 
-<script type="text/javascript" src="/validate.js"></script>
+<script type="text/javascript" src="scripts/validate.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript">
+  function checkPasswordMatch(e) {
+    var password = $("#password").val();
+    var confirmPassword = $("#password-check").val();
+    if (password != confirmPassword){
+      e.preventDefault();
+      alert("Passwords do not match.");
+      // Why aren't these working? Onload function but they should be loaded on submit!?
 
-<!-- Password checking script here!! -->
-<script>
-  //$('#password, #password-check').on('keyup', function () {
-    //document.onload=function(){
-  
-      function checkPasswordMatch(e){
-    var p1 = document.getElementById("password");
-    var p2 = document.getElementById("password-check");
+      makeRed($("#password"));
+      makeRed($("#password-check"));
+      
+    } 
+  };
+</script>
 
-    
-    if(p1.value!=p2.value){
-        makeRed(p1);
-        makeRed(p2);
-        alert("confirm password must match password");
-        e.preventDefault();
-    }
-    
-    
 
-  }
-//}
-  </script>
- 
 </head>
 
 <body>
   
-
 
 <form method="post" action="newuser.php" id="mainForm" enctype="multipart/form-data">
   First Name:<br>
@@ -52,12 +46,9 @@
   Re-enter Password:<br>
   <input type="password" name="password-check" id="password-check" class="required">
   <br>
-  file upload:<br>
-  <input type="file" name="userImage" id="userImage" class="required">
-  <br>
-  <br>
-
-  <input type="submit" value="Create New User">
+  <input type='file' name='userImage' id='userImage' class='required'/>
+  <br><br>
+  <input type="submit" value="Create New User" onsubmit="checkPasswordMatch()">
 </form>
+
 </body>
-</html>

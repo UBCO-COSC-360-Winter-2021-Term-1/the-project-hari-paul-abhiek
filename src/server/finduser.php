@@ -1,6 +1,6 @@
 <?php
-    //$root = realpath($_SERVER["DOCUMENT_ROOT"]);
-    require '\\db_conn.php';
+       $root = realpath($_SERVER["DOCUMENT_ROOT"]);
+       require $root.'\\src\\server\\db_conn.php';
 
     // Get the user's name and make sure it's safe for both POST and GET
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
