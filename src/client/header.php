@@ -25,24 +25,23 @@
                     </ul>
                    
                     <div class="row mx-2">
-                    <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                    <form class= "form-inline my-2 my-lg-0">
+                   <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <form class= "form-inline">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        </li>
-                        <li class="nav-item">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </li>
+                         </li>
+                        <li class="nav-item"> 
+                    <button class="btn btn-outline-success my-2 my-sm-0"  inline="true" type="submit">Search</button>
+                    </li> 
                     </form>
                     <!-- Add admin when certain user logs in-->
-                    <li class="nav-item">
-                        <button class="btn btn-primary">Login</button>
-                    </li>
-                        <!-- Float this button to the right. Replace with logout once clicked-->
-                        <li class="nav-item">
-                        <button class="btn btn-primary">signup</button>
-                        </li>
-                    </ul>
+                     <li class="nav-item">
+                        <button class="btn btn-primary" inline="true" >Login</button>
+                     </li>
+                        <li class="nav-item"> 
+                        <button class="btn btn-primary" inline="true" >signup</button>
+                         </li>
+                    </ul> 
                     </div>
                 </div>
             </div>

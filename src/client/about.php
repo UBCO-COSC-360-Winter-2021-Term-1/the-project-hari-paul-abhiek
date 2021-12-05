@@ -18,37 +18,9 @@
 </head>
 
 <body>
-    <header id="text-center">
-        <nav>
-            <div class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="index.html">Okanagan Bike Trails</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="trails.html">Trails</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="photos.html">Photos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <!-- Add admin when certain user logs in-->
-                        <a href="validateLogin.php" class="btn btn-primary">Login</a>
-                        <!-- Float this button to the right. Replace with logout once clicked-->
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <?php
+include 'header.php';
+    ?>
 
     <div class="container">
         <div class="row">
