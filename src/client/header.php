@@ -1,7 +1,11 @@
 
+        <?php
+        include "./../server/db_conn.php"
+
+?>
         <nav>
             <div class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="index.html">Okanagan Bike Trails</a>
+                <a class="navbar-brand" href="./../client/index.php">Okanagan Bike Trails</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -10,23 +14,47 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.php">Home</a>
+                            <a class="nav-link" href="./../client/index.php">Home</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="trails.php">Trails</a>
+                            
+
+                            <div class="dropdown">
+  <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+  <a class="nav-link" href="./../client/trails.php">Trails</a>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+  <li><a class="dropdown-item" href="trails.php"><b>View All Trails</b></a></li>
+<?php
+$sql = "SELECT * FROM `trails`";
+if ($result = mysqli_query($conn, $sql)){ 
+  while ($row = mysqli_fetch_assoc($result)) {
+    $trail = $row['trailName'];
+    $tid = $row['trailId'];
+echo'     
+<li><a class="dropdown-item" href="comment.php?id='.$tid.'">'.$trail.'</a></li>';
+  }
+mysqli_free_result($result);
+}
+mysqli_close($conn);
+      ?>
+  </ul>
+</div>
+
+
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="photos.php">Photos</a>
+                            <a class="nav-link" href="./../client/photos.php">Photos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.php">About</a>
+                            <a class="nav-link" href="./../client/about.php">About</a>
                         </li>
                         
                     </ul>
                    
                     <div class="row mx-2">
                         <?php
-                    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
+                    if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true){
   $loggedin= true;
 }
 else{
@@ -46,17 +74,17 @@ else{
 <?php
                      if($loggedin){
       echo '<li class="nav-item">
-        <a class="nav-link" href="logout.php">Logout</a>
+        <a class="nav-link" href="./../server/logout.php">Logout</a>
       </li></ul>';
                      }
 ?>
 <?php
       if(!$loggedin){
       echo '<li class="nav-item">
-                        <button class="btn btn-primary" inline="true" ><a href="login.php" style="color:white">Login</a></button>
+                        <button class="btn btn-primary" inline="true" ><a href="./../server/login.php" style="color:white">Login</a></button>
                      </li>
                         <li class="nav-item"> 
-                        <button class="btn btn-primary" inline="true" ><a href="newuser.php" style="color:white">Sign Up</a></button>
+                        <button class="btn btn-primary" inline="true" ><a href="./../server/newuser.html" style="color:white">Sign Up</a></button>
                          </li>
                     </ul> ';
       }
@@ -66,3 +94,4 @@ else{
                 </div>
             </div>
         </nav>
+        
