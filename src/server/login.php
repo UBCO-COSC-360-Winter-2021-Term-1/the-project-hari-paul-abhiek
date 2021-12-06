@@ -19,7 +19,7 @@ include "./../client/header.php";
 ?>
     <div class="container">
             <?php
-            if (isset($_SESSION['user'])) {
+            if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
                 header("Location: ./../client/index.php");
               }
              if (!isset($_SESSION["loggedIn"])){
@@ -33,9 +33,10 @@ include "./../client/header.php";
                 echo " <br>";
                 echo " <input type=\"submit\" value=\"Login\" class=\"btn btn-primary\">";
                 echo " </form>"; 
-            }else{
-                header('Location: \\src\\client\\index.php');
-            exit();}
+             }
+            // else{
+            //     header('Location: ./../client/index.php');
+            // exit();}
             ?>
     </div>
 

@@ -12,17 +12,11 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="src/client/css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
-    <?php
-    include 'header.php';
-    ?>
 </head>
 
 <body>
-<?php
-   // include 'db_conn.php';
-    ?>
+<?php include 'header.php';?>
+
     <div class="container">
         <div class="row align-items-start">
 

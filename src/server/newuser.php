@@ -1,6 +1,6 @@
 <?php
-    $root = realpath($_SERVER["DOCUMENT_ROOT"]);
-    require $root.'\\validate.php';
+    session_start();
+    require 'validate.php';
 
     // Create variables for proper image path
     $target_dir = "uploads/";
@@ -52,7 +52,7 @@
 
     //Check if username exists
     $sqlname = "SELECT * FROM users WHERE username='$username'";
-    $query = mysqli_query($connection, $sqlname);
+    $query = mysqli_query($conn, $sqlname);
 
     if (mysqli_num_rows($query) > 0) {
         $name_error = "Sorry... username already taken";
@@ -62,7 +62,7 @@
         // First SQL statement to insert new user
         $sql = "INSERT INTO users (username, firstName, lastName, email, password) VALUES (?, ?, ?, ?, ?);";
         
-        if ($stmt = mysqli_prepare($connection, $sql))
+        if ($stmt = mysqli_prepare($conn, $sql))
         {
             mysqli_stmt_bind_param($stmt, "sssss", $username, $firstname, $lastname, $email, $hash);
             mysqli_stmt_execute($stmt);
@@ -72,13 +72,13 @@
         }
         else
         {
-            echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
 
         // Second SQL statement to retrieve associated userID
         $sql2 = "SELECT userID FROM users WHERE username = ?";
 
-        if ($stmt2 = mysqli_prepare($connection, $sql2))
+        if ($stmt2 = mysqli_prepare($conn, $sql2))
         {
             mysqli_stmt_bind_param($stmt2, "s", $username);
             mysqli_stmt_execute($stmt2);
@@ -90,7 +90,7 @@
         }
         else
         {
-            echo "Error: " . $sql2 . "<br>" . mysqli_error($connection);
+            echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
         }
         
         // Third SQL statement to insert image path
@@ -101,7 +101,7 @@
             // create a new statement to insert to insert the image into the table. Recall
             // that the ? is a placeholder to variable data
 
-        $stmt3 = mysqli_stmt_init($connection); //init prepared statement object
+        $stmt3 = mysqli_stmt_init($conn); //init prepared statement object
         mysqli_stmt_prepare($stmt3, $sql3); //register the query
 
         $null = NULL;
@@ -119,5 +119,5 @@
         echo "The file ". htmlspecialchars( basename( $_FILES["userImage"]["name"])). " has been uploaded to the server. <br>";
     }
 
-    mysqli_close($connection);
+    mysqli_close($conn);
 ?>

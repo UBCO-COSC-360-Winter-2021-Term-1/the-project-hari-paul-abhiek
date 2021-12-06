@@ -2,7 +2,7 @@
 <html>
 
 <?php
- 
+ session_start();
  include 'validate.php';
 
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) 
@@ -21,7 +21,7 @@ else{
         if($uname == $username && $password == $pass){
             
             echo "Login Succesfull!";
-            $_SESSION['loggedin'] = true;
+            $_SESSION['loggedIn'] = true;
             header('Location: ./../client/index.php');
             break;
         }

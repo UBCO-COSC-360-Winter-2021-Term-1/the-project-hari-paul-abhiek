@@ -1,97 +1,94 @@
-
-        <?php
-        include "./../server/db_conn.php"
-
+<?php
+  session_start();
+  include "./../server/db_conn.php";
+  
+  if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true){
+    $loggedin= true;
+  }
+  else{
+    $loggedin = false;
+  }
 ?>
-        <nav>
-            <div class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="./../client/index.php">Okanagan Bike Trails</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="./../client/index.php">Home</a>
-                        </li>
-                        <li class="nav-item ">
-                            
+<nav>
+  <div class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="./../client/index.php">Okanagan Bike Trails</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="./../client/index.php">Home</a>
+    </li>
+    <li class="nav-item ">
+    <div class="dropdown">
+      <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+        <a class="nav-link" href="./../client/trails.php">Trails</a>
+      </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="trails.php"><b>View All Trails</b></a></li>
 
-                            <div class="dropdown">
-  <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
-  <a class="nav-link" href="./../client/trails.php">Trails</a>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-  <li><a class="dropdown-item" href="trails.php"><b>View All Trails</b></a></li>
 <?php
 $sql = "SELECT * FROM `trails`";
 if ($result = mysqli_query($conn, $sql)){ 
   while ($row = mysqli_fetch_assoc($result)) {
     $trail = $row['trailName'];
     $tid = $row['trailId'];
-echo'     
-<li><a class="dropdown-item" href="comment.php?id='.$tid.'">'.$trail.'</a></li>';
+    echo'<li><a class="dropdown-item" href="comment.php?id='.$tid.'">'.$trail.'</a></li>';
   }
 mysqli_free_result($result);
 }
 mysqli_close($conn);
-      ?>
+?>
+
   </ul>
-</div>
+  </div>
+  </li>
 
+  <li class="nav-item">
+      <a class="nav-link" href="./../client/photos.php">Photos</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" href="./../client/about.php">About</a>
+  </li>
 
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./../client/photos.php">Photos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./../client/about.php">About</a>
-                        </li>
-                        
-                    </ul>
-                   
-                    <div class="row mx-2">
-                        <?php
-                    if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true){
-  $loggedin= true;
-}
-else{
-  $loggedin = false;
-}
-?>
-                    <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                    <form class= "form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                         </li>
-                        <li class="nav-item"> 
-                    <button class="btn btn-outline-success my-2 my-sm-0"  inline="true" type="submit">Search</button>
-                    </li> 
-                    </form>
+  </ul>
+  
+  <div class="row mx-2">
+
+  <ul class="navbar-nav mr-auto">
+  <li class="nav-item">
+  <form class= "form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        </li>
+      <li class="nav-item"> 
+  <button class="btn btn-outline-success my-2 my-sm-0"  inline="true" type="submit">Search</button>
+  </li> 
+  </form>
 
 <?php
-                     if($loggedin){
-      echo '<li class="nav-item">
-        <a class="nav-link" href="./../server/logout.php">Logout</a>
-      </li></ul>';
-                     }
+  if($loggedin == true){
+  echo '<li class="nav-item">
+          <button class="btn btn-primary" inline="true" ><a href="./../server/logout.php" style="color:white">Logout</a></button>
+        </li></ul>';
+  }
 ?>
 <?php
-      if(!$loggedin){
+      if($loggedin == false){
       echo '<li class="nav-item">
-                        <button class="btn btn-primary" inline="true" ><a href="./../server/login.php" style="color:white">Login</a></button>
-                     </li>
-                        <li class="nav-item"> 
-                        <button class="btn btn-primary" inline="true" ><a href="./../server/newuser.html" style="color:white">Sign Up</a></button>
-                         </li>
-                    </ul> ';
+              <button class="btn btn-primary" inline="true" ><a href="./../server/login.php" style="color:white">Login</a></button>
+            </li>
+            <li class="nav-item"> 
+              <button class="btn btn-primary" inline="true" ><a href="./../server/newuser.html" style="color:white">Sign Up</a></button>
+            </li>
+            </ul> ';
       }
 ?>
 
-                    </div>
-                </div>
-            </div>
-        </nav>
+  </div>
+  </div>
+  </div>
+  </nav>
         
