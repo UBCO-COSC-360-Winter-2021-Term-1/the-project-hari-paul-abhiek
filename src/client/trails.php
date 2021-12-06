@@ -41,9 +41,9 @@
           echo '<div class="card mx-auto m-3" style="width: 18rem">
               <img src="img/card-' . $id . '.jpg" class="card-img-top" alt="Card image cap">
               <div class="card-body">
-                  <h5 class="card-title"><a href="threadlist.php?id=' . $id . '">' . $trail . '</a></h5>
+                  <h5 class="card-title"><a href="comment.php?id=' . $id . '">' . $trail . '</a></h5>
                   <p class="card-text">' . substr($desc, 0, 90) . '... </p>
-                  <a href="trails.php?id=' . $id . '" class="btn btn-primary">View trail</a>
+                  <a href="comment.php?id=' . $id . '" class="btn btn-primary">View trail</a>
               </div>
           
         </div>';
