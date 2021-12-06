@@ -76,7 +76,7 @@ echo'
   
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2021 Copyright:
-      <a href="index.html"> OkanaganBikeTrails.com</a>
+      <a href="./../client/index.php"> OkanaganBikeTrails.com</a>
     </div>
     <!-- Copyright -->
   
