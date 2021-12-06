@@ -18,13 +18,10 @@
 
 <?php
     session_start();
+    include 'header.php';
     $root = $_SERVER["DOCUMENT_ROOT"];
     include $root . '/the-project-hari-paul-abhiek/src/server/db_conn.php';
-    include 'header.php';
 
-    $_SESSION['username'] = "dvader";
-
-  
     // Which trail post is being commented on?
     $id = $_GET['id'];
     $sql = "SELECT * FROM `trails` WHERE `trailID` = $id";

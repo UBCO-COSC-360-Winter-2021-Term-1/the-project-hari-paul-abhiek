@@ -22,7 +22,7 @@ include "./../client/header.php";
             if (isset($_SESSION['user'])) {
                 header("Location: ./../client/index.php");
               }
-             if (!$_SESSION["loggedIn"]){
+             if (!isset($_SESSION["loggedIn"])){
                 echo "<form method=\"post\" action=\"processlogin.php\" id=\"mainForm\" >";
                 echo "Username:<br>";
                 echo " <input type=\"text\" name=\"username\" id=\"username\" class=\"required\">";

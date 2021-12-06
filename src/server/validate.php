@@ -1,47 +1,46 @@
 <?php
- $root = realpath($_SERVER["DOCUMENT_ROOT"]);
- require $root.'\\src\\server\\db_conn.php';
-$host = "localhost";
-$database = "project";
-$user = "proj";
-$password = "kIhRJSPLMfQkUD)z";
+ require 'db_conn.php';
+// $host = "localhost";
+// $database = "project";
+// $user = "proj";
+// $password = "kIhRJSPLMfQkUD)z";
 
-$connection = mysqli_connect($host, $user, $password, $database);
+// $conn = mysqli_connect($host, $user, $password, $database);
 
-$error = mysqli_connect_error();
-if($error != null)
-{
-  $output = "<p>Unable to connect to database!</p>";
-  exit($output);
-}
+// $error = mysqli_connect_error();
+// if($error != null)
+// {
+//   $output = "<p>Unable to connect to database!</p>";
+//   exit($output);
+// }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])) {
-        $firstname = mysqli_real_escape_string($connection, $_POST['firstname']);
-        $lastname = mysqli_real_escape_string($connection, $_POST['lastname']);
-        $username = mysqli_real_escape_string($connection, $_POST['username']);
-        $email = mysqli_real_escape_string($connection, $_POST['email']);
-        $password = mysqli_real_escape_string($connection, $_POST['password']);
+        $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+        $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
         $hash = md5($password);
     }
     else if (isset($_POST['username']) && isset($_POST['password'])) {
-        $username = mysqli_real_escape_string($connection, $_POST['username']);
-        $password = mysqli_real_escape_string($connection, $_POST['password']);
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
         $hash = md5($password);
     }
 }
 else {
     if (isset($_GET['firstname']) && isset($_GET['lastname']) && isset($_GET['username']) && isset($_GET['email']) && isset($_GET['password'])) {
-        $firstname = mysqli_real_escape_string($connection, $_GET['firstname']);
-        $lastname = mysqli_real_escape_string($connection, $_GET['lastname']);
-        $username = mysqli_real_escape_string($connection, $_GET['username']);
-        $email = mysqli_real_escape_string($connection, $_GET['email']);
-        $password = mysqli_real_escape_string($connection, $_GET['password']);
+        $firstname = mysqli_real_escape_string($conn, $_GET['firstname']);
+        $lastname = mysqli_real_escape_string($conn, $_GET['lastname']);
+        $username = mysqli_real_escape_string($conn, $_GET['username']);
+        $email = mysqli_real_escape_string($conn, $_GET['email']);
+        $password = mysqli_real_escape_string($conn, $_GET['password']);
         $hash = md5($password);
     }
     else if (isset($_GET['username']) && isset($_GET['password'])) {
-        $username = mysqli_real_escape_string($connection, $_GET['username']);
-        $password = mysqli_real_escape_string($connection, $_GET['password']);
+        $username = mysqli_real_escape_string($conn, $_GET['username']);
+        $password = mysqli_real_escape_string($conn, $_GET['password']);
         $hash = md5($password);
     }
 } 
