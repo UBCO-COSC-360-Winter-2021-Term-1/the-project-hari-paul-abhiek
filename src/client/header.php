@@ -25,7 +25,15 @@
                     </ul>
                    
                     <div class="row mx-2">
-                   <ul class="navbar-nav mr-auto">
+                        <?php
+                    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
+  $loggedin= true;
+}
+else{
+  $loggedin = false;
+}
+?>
+                    <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
                     <form class= "form-inline">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -34,14 +42,26 @@
                     <button class="btn btn-outline-success my-2 my-sm-0"  inline="true" type="submit">Search</button>
                     </li> 
                     </form>
-                    <!-- Add admin when certain user logs in-->
-                     <li class="nav-item">
-                        <button class="btn btn-primary" inline="true" >Login</button>
+
+<?php
+                     if($loggedin){
+      echo '<li class="nav-item">
+        <a class="nav-link" href="logout.php">Logout</a>
+      </li></ul>';
+                     }
+?>
+<?php
+      if(!$loggedin){
+      echo '<li class="nav-item">
+                        <button class="btn btn-primary" inline="true" ><a href="login.php" style="color:white">Login</a></button>
                      </li>
                         <li class="nav-item"> 
-                        <button class="btn btn-primary" inline="true" >signup</button>
+                        <button class="btn btn-primary" inline="true" ><a href="newuser.php" style="color:white">Sign Up</a></button>
                          </li>
-                    </ul> 
+                    </ul> ';
+      }
+?>
+
                     </div>
                 </div>
             </div>
