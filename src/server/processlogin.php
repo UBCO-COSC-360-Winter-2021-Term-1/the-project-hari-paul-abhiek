@@ -24,9 +24,11 @@ else{
             $_SESSION['loggedin'] = true;
             header('Location: ./../client/index.php');
             break;
-        }else
-        header('Location: ./../server/login.php');
-        echo "alert(\"wrong username or password entered\")";
+        }
+        else{
+        echo "<script>alert(\"Wrong username or password entered. Please try again.\")
+        window.location.href='./../server/login.php'</script>";
+        }
     } 
 
 mysqli_free_result($results);
