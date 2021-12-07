@@ -20,6 +20,8 @@ else{
         $pass2 = $row['password'];
         if($uname2 == $username && $password == $pass2){
             $_SESSION['admin_loggedIn'] = true;
+            $_SESSION['username'] = $uname2;
+            $_SESSION['password'] = $pass2;
         }
     }
 

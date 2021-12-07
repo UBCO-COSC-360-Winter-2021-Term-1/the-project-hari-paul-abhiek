@@ -78,6 +78,7 @@ CREATE TABLE `users` (
   `pic` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ALTER TABLE `users` ADD `userID` INT NOT NULL AUTO_INCREMENT , ADD UNIQUE (`userID`); 
 --
 -- Dumping data for table `users`
 --

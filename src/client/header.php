@@ -91,7 +91,7 @@ mysqli_close($conn);
   </li>
   <li class="nav-item">
   <a class="nav-link" href="./../client/profile.php"><figure><img src="img/profile.png" alt="Profile" style="width:2em"></figure></a>
-  <figcaption style="color:blue">'.$user.'</figcaption>
+  <figcaption style="color:blue">'.$_SESSION['username'].'</figcaption>
   </li>';
   
         if($admin_loggedin==true){
