@@ -24,7 +24,7 @@ else{
         }
 
         //--------------
-        //$password = md5($password);
+        $password = md5($password);
 
         $sql = "SELECT username, password, pic FROM users";
         $results = mysqli_query($conn, $sql);

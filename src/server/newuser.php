@@ -44,7 +44,8 @@
         $pic = 0;
     } else {
         if (move_uploaded_file($_FILES["userImage"]["tmp_name"], $target_file)) {
-            echo "The file ". htmlspecialchars( basename( $_FILES["userImage"]["name"])). " has been uploaded to the temp location. <br>";
+            $msg = "The file ". htmlspecialchars( basename( $_FILES["userImage"]["name"])). " has been uploaded to the temp location";
+            echo "<script type='text/javascript'>alert('$msg');</script>";
             $pic = 1;
         }
     }
@@ -114,8 +115,9 @@
         mysqli_stmt_close($stmt3); 
         //close the statement
 
-        echo "The file ". htmlspecialchars( basename( $_FILES["userImage"]["name"])). " has been uploaded to the server. <br>";
-
+        $msg2 = "The file ". htmlspecialchars( basename( $_FILES["userImage"]["name"])). " has been uploaded to the server";
+        echo "<script type='text/javascript'>alert('$msg2')
+            window.location.href='./../client/index.php'</script>";
     }
 
     mysqli_close($conn);
