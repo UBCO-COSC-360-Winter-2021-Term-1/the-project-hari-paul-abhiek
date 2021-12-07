@@ -17,7 +17,6 @@
 <body>
 
 <?php
-    session_start();
     include 'header.php';
     $root = $_SERVER["DOCUMENT_ROOT"];
     include $root . '/the-project-hari-paul-abhiek/src/server/db_conn.php';
@@ -42,8 +41,8 @@
 
 <?php
     // Is the user logged in? Can only comment on posts if logged in
-    $user = $_SESSION['username'];
-    if(isset($user)){
+    if(isset($_SESSION['username'])) {
+        $userName = $_SESSION['username'];
         // Create the form to submit a comment
         echo '<div class="container">
         <h1 class="py-2">Post a Comment</h1> 
@@ -76,10 +75,16 @@
 
         date_default_timezone_set('America/Vancouver');
         $date = date('Y-m-d H:i:s', time());
-
-        $sql = "INSERT INTO `comment` ( `body`, `postid`, `username`, `commentdate`) VALUES ('$comment', '$id', '$user' , $date)";
-        $result = mysqli_query($conn, $sql);
-        $showAlert = true;
+        
+        $sql = "INSERT INTO comment ( body, postid, username, commentdate) VALUES (?, ?, ?, ?)";
+        if ($stmt = mysqli_prepare($conn, $sql))
+        {
+            mysqli_stmt_bind_param($stmt, "siss", $comment, $id, $userName , $date);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+            $showAlert = true;
+        }
+    
         if($showAlert){
             echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Success!</strong> Your comment has been added!
@@ -97,7 +102,7 @@
         <h1 class="py-2">Discussions</h1>
     <?php
     
-    $sql = "SELECT * FROM `comment` WHERE postid=$id"; 
+    $sql = "SELECT * FROM comment WHERE postid = $id"; 
     $result = mysqli_query($conn, $sql);
     $noResult = true;
     while($row = mysqli_fetch_assoc($result)){
@@ -105,17 +110,18 @@
         $cid = $row['cid'];
         $content = $row['body']; 
         $comment_user = $row['username']; 
-        $comment_time = $row['commmetdate']; 
+        $comment_time = $row['commentdate']; 
         
 
-        $sql2 = "SELECT email FROM `users` WHERE username='$comment_user'";
+        $sql2 = "SELECT email FROM users WHERE username = $comment_user";
         $result2 = mysqli_query($conn, $sql2);
         $row2 = mysqli_fetch_assoc($result2);
+        $email = $row2['email'];
 
         echo '<div class="media my-3">
             <img src="img/userdefault.png" width="54px" class="mr-3" alt="...">
             <div class="media-body">
-               <p class="font-weight-bold my-0">'. $row2['email'] .' at '. $comment_time. '</p> '. $content . '
+               <p class="font-weight-bold my-0">'. $email .' at '. $comment_time. '</p> '. $content . '
             </div>
         </div>';
 

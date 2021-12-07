@@ -22,6 +22,8 @@ else{
             
             echo "Login Succesfull!";
             $_SESSION['loggedIn'] = true;
+            $_SESSION['username'] = $uname;
+            $_SESSION['password'] = $pass;
             header('Location: ./../client/index.php');
             break;
         }
