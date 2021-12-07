@@ -21,12 +21,6 @@
         }
     }
 
-    // Check if file already exists
-    if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
-        $uploadOk = 0;
-    }
-
     // Allow only certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif" ) {
         echo "Sorry, only JPG, PNG, & GIF files are allowed.";
@@ -58,8 +52,8 @@
         echo "<script type='text/javascript'>alert('$name_error');</script>";
     } 
     else {
-        // First SQL statement to insert new user
-        $sql = "INSERT INTO users (username, firstName, lastName, email, password, pic) VALUES (?, ?, ?, ?, ?, ?);";
+        // First SQL statement to UPDATE new user
+        $sql = "UPDATE INTO users (username, firstName, lastName, email, password, pic) VALUES (?, ?, ?, ?, ?, ?);";
         
         if ($stmt = mysqli_prepare($conn, $sql))
         {
@@ -103,7 +97,7 @@
         mysqli_stmt_prepare($stmt3, $sql3); //register the query
 
         $null = NULL;
-        mysqli_stmt_bind_param($stmt3, "isbs", $userID, $imageFileType, $null, $target_file); 
+        mysqli_stmt_bind_param($stmt3, "isbs", $userID, $imageFileType, $null, $_FILES["userImage"]["name"]); 
 
 
         mysqli_stmt_send_long_data($stmt3, 2, $imagedata); 

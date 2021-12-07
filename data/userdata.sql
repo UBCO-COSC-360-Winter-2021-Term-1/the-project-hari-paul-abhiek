@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS comment;
-DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS trails;
 DROP TABLE IF EXISTS userImages;
+DROP TABLE IF EXISTS users;
 
 -- phpMyAdmin SQL Dump
 -- version 4.6.5.2
@@ -39,12 +39,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `username` varchar(15) NOT NULL,
-  `password` varchar(20) NOT NULL
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 
-INSERT INTO `admin` (`username`, `password`) VALUES  ('paul', 'paul'),('hari','hari'),('bist','bist');
+INSERT INTO `admin` (`username`, `password`) VALUES  ('paul', 'paul'),('hari','hari'),('bist','bist'),('dvader','p@ssw0rd');
 -- --password t
 -- ('hari', 'e358efa489f58062f10dd7316b65649e'),
 -- --password y
@@ -82,7 +82,7 @@ ALTER TABLE `users` ADD `userID` INT NOT NULL AUTO_INCREMENT , ADD UNIQUE (`user
 --
 
 INSERT INTO `users` (`username`, `firstName`, `lastName`, `email`, `password`) VALUES
-('dvader', 'darth', 'vader', 'vader@dark.force', '0f359740bd1cda994f8b55330c86d845');
+('dvader', 'darth', 'vader', 'vader@dark.force', 'p@ssw0rd');
 
 --
 -- Indexes for dumped tables
