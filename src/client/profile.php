@@ -15,14 +15,16 @@
 </head>
 
 <body>
+
     <?php
+    include 'header.php';
     $connString = "mysql:host=localhost;dbname=project";
     $user = "webuser";
     $pass = "P@ssw0rd";
     $pdo = new PDO($connString, $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     ?>
-    <div class="main_account">
+    
         <!-- have to link to this after checking session variable user and seeing if they are logged in -->
 
         <!-- included all teh stuff above to make the doc work -->
@@ -53,7 +55,6 @@
             // }
             // echo $user;
             ?>
-            <div class="left_col_account">
                 <?php
                 $sql = "SELECT * FROM users WHERE username = ?";
                 $result = $pdo->prepare($sql);
@@ -73,13 +74,11 @@
                     echo '<p><img src="data:image/jpeg;base64,' . base64_encode($row['pic']) . '" alt="User missing a profile picture"/></p>';
                 }
                 ?>
+                <div>
                 <form action="editAccount.php" method="post">
                     <input type="submit" value="Edit Account">
                 </form>
             </div>
-            <!-- the column on the right -->
-            <div class="right_col_account">
-                <!-- the style for the box on the right -->
             <?php
             //getting the posts that the logged in user has using session variable and a query
             $sql = "SELECT * FROM comment WHERE username =? ORDER BY commentdate DESC";
@@ -118,10 +117,7 @@
         $pdo = null;
             ?>
 
-            </div>
-    </div>
-
-    <?php include 'footer.php'; ?>
+        
 
 </body>
 

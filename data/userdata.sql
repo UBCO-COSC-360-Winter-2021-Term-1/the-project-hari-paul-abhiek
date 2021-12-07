@@ -44,9 +44,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 
--- INSERT INTO `admin` (`username`, `pass`) VALUES
--- --password s
--- ('paul', '03c7c0ace395d80182db07ae2c30f034'),
+INSERT INTO `admin` (`username`, `password`) VALUES  ('paul', 'paul'),('hari','hari'),('bist','bist');
 -- --password t
 -- ('hari', 'e358efa489f58062f10dd7316b65649e'),
 -- --password y

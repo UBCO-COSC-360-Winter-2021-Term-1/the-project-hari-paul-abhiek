@@ -1,5 +1,9 @@
 <?php
-include "./../server/db_conn.php";
+  $connString = "mysql:host=localhost;dbname=project";
+  $user = "webuser";
+  $pass = "P@ssw0rd";
+  $pdo = new PDO($connString, $user, $pass);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,6 +19,22 @@ include "./../server/db_conn.php";
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="src/client/css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+  function checkPasswordMatch(e) {
+    var password = $("#password").val();
+    var confirmPassword = $("#password-check").val();
+    if (password != confirmPassword){
+      e.preventDefault();
+      alert("Passwords do not match.");
+      // Why aren't these working? Onload function but they should be loaded on submit!?
+
+      makeRed($("#password"));
+      makeRed($("#password-check"));
+      
+    } 
+  };
+</script>
+
 </head>
 
 <body>
@@ -92,23 +112,34 @@ include "./../server/db_conn.php";
             $pass = $row['password'];
         }
     ?>
-        <form action="editAccount.php" method="post" class="main_wrapper_editAccount">
-            <label for="uname">Username: </label>
-            <textarea name="uname" id="uname" cols="30" rows="1"><?php echo $uname; ?></textarea>
-            <br>
-            <label for="fname">First Name: </label>
-            <textarea name="fname" id="fname" cols="30" rows="1"><?php echo $fname; ?></textarea>
-            <br>
-            <label for="lname">Last Name: </label>
-            <textarea name="lname" id="lname" cols="30" rows="1"><?php echo $lname; ?></textarea>
-            <br>
-            <label for="email">Email: </label>
-            <textarea name="email" id="email" cols="30" rows="1"><?php echo $email; ?></textarea>
-            <br>
-            <label for="pass">Password: </label>
-            <textarea name="pass" id="pass" cols="30" rows="1"><?php echo $pass; ?></textarea>
-            <input type="submit" value="Update Account">
-        </form>
+
+<?php
+echo'
+<form method="post" action="editAccount.php" id="mainForm" enctype="multipart/form-data">
+  First Name:<br>
+  <input type="text" name="firstname" id="firstname" class="required">
+  <br>
+  Last Name:<br>
+  <input type="text" name="lastname" id="lastname" class="required">
+  <br>
+  Username:<br>
+  <input type="text" name="username" id="username" class="required"><?php echo $uname; ?>
+  <br>
+  email:<br>
+  <input type="text" name="email" id="email" class="required">
+  <br>
+  Password:<br>
+  <input type="password" name="password" id="password" class="required">
+  <br>
+  Re-enter Password:<br>
+  <input type="password" name="password-check" id="password-check" class="required">
+  <br>
+  <input type="file" name="userImage" id="userImage" class="required"/>
+  <br><br>
+  <input type="submit" value="Update Account" onsubmit="checkPasswordMatch()">
+</form>'
+?>
+
     <?php
     } else {
         echo "<a href='./../server/login.php'>Must be logged in to edit account, click here to login</a>";

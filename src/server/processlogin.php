@@ -11,13 +11,13 @@ else{
 
 
     //-----------admin part
-
+    // $password = md5($password);
     $sql2 = "SELECT username, password FROM admin";
     $results2 = mysqli_query($conn, $sql2);
 
-    while ($row = mysqli_fetch_assoc($results2)) {
-        $uname2 = $row['username'];
-        $pass2 = $row['password'];
+    while ($row2 = mysqli_fetch_assoc($results2)) {
+        $uname2 = $row2['username'];
+        $pass2 = $row2['password'];
         if($uname2 == $username && $password == $pass2){
             $_SESSION['admin_loggedIn'] = true;
             $_SESSION['username'] = $uname2;
@@ -26,7 +26,7 @@ else{
     }
 
     //--------------
-    $password = md5($password);
+    //$password = md5($password);
 
     $sql = "SELECT username, password FROM users";
     $results = mysqli_query($conn, $sql);
