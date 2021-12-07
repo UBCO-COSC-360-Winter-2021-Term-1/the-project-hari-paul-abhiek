@@ -34,16 +34,16 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="img/andhika-soreng-US06QF_sxu8-unsplash.jpg" class="d-block w-100"
-                                alt="..." style="height: 800px">
+                            <img src="img/andhika-soreng-US06QF_sxu8-unsplash.jpg" class="img-responsive d-block w-100"
+                                alt="..." style= "max-height: 800px">
                         </div>
                         <div class="carousel-item">
-                            <img src="img/sterlinglanier-lanier-4pUVVbpCAD8-unsplash.jpg" class="d-block w-100"
-                                alt="..." style="height: 800px">
+                            <img src="img/sterlinglanier-lanier-4pUVVbpCAD8-unsplash.jpg" class="img-responsive d-block w-100"
+                                alt="..." style= "max-height: 800px">
                         </div>
                         <div class="carousel-item">
-                            <img src="img/tobias-bjerknes-pu40LpUjv5I-unsplash.jpg" class="d-block w-100"
-                                alt="..." style="height: 800px">
+                            <img src="img/tobias-bjerknes-pu40LpUjv5I-unsplash.jpg" class="img-responsive d-block w-100"
+                                alt="..." style= "max-height: 800px">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
