@@ -8,6 +8,11 @@
   else{
     $loggedin = false;
   }
+  if(isset($_SESSION['admin_loggedIn']) && $_SESSION['admin_loggedIn']==true){
+    $admin_loggedin= true;
+  }else{
+    $admin_loggedin = false;
+  }
 ?>
 <nav>
   <div class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -89,7 +94,7 @@ mysqli_close($conn);
   <figcaption style="color:blue">'.$user.'</figcaption>
   </li>';
   
-        if(isset($_SESSION['admin_loggedIn'])){
+        if($admin_loggedin==true){
           echo '<li class="nav-item">
           <a class="nav-link" href="./../client/admin.php">Admin</a>
         </li>';

@@ -9,6 +9,21 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true)
     header('Location: ./../client/index.php');
 else{
 
+
+    //-----------admin part
+
+    $sql2 = "SELECT username, password FROM admin";
+    $results2 = mysqli_query($conn, $sql2);
+
+    while ($row = mysqli_fetch_assoc($results2)) {
+        $uname2 = $row['username'];
+        $pass2 = $row['password'];
+        if($uname2 == $username && $password == $pass2){
+            $_SESSION['admin_loggedIn'] = true;
+        }
+    }
+
+    //--------------
     $password = md5($password);
 
     $sql = "SELECT username, password FROM users";
