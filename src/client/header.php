@@ -8,9 +8,14 @@
   else{
     $loggedin = false;
   }
+  if(isset($_SESSION['admin_loggedIn']) && $_SESSION['admin_loggedIn']==true){
+    $admin_loggedin= true;
+  }else{
+    $admin_loggedin = false;
+  }
 ?>
 <nav>
-  <div class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="./../client/index.php">Okanagan Bike Trails</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -41,6 +46,7 @@ if ($result = mysqli_query($conn, $sql)){
 mysqli_free_result($result);
 }
 mysqli_close($conn);
+
 ?>
 
   </ul>
@@ -70,10 +76,35 @@ mysqli_close($conn);
 
 <?php
   if($loggedin == true){
-  echo '<li class="nav-item">
-          <button class="btn btn-primary" inline="true" ><a href="./../server/logout.php" style="color:white">Logout</a></button>
-        </li></ul>';
-  }
+   
+    // $sql = "SELECT username, password FROM users";
+    // if ($result = mysqli_query($conn, $sql)){ 
+  
+    //   while ($row = mysqli_fetch_assoc($results)) {
+    //       $uname = $row['username'];
+    //     }
+    //     mysqli_free_result($result);
+    //     }
+
+    echo '<li class="nav-item">
+    <a class="nav-link" href="./../server/logout.php">Logout</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="./../client/profile.php"><figure><img src="img/profile.png" alt="Profile" style="width:2em"></figure></a>
+  <figcaption style="color:blue">'.$user.'</figcaption>
+  </li>';
+  
+        if($admin_loggedin==true){
+          echo '<li class="nav-item">
+          <a class="nav-link" href="./../client/admin.php">Admin</a>
+        </li>';
+        }
+        echo '</ul>';
+                       }
+  
+  
+  
+      
 ?>
 <?php
       if($loggedin == false){
@@ -85,6 +116,7 @@ mysqli_close($conn);
             </li>
             </ul> ';
       }
+      //session_destroy();
 ?>
 
   </div>

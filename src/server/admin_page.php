@@ -6,32 +6,35 @@
 	die("Connection failed");
   }
   else{
-    if(!isset($_COOKIE["PHPSESSID"]))
-    {
-      session_start();
-    }
+	session_start();
   }
 
   if(isset($_POST['username']) && isset($_POST['password'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $stmt = $db->prepare("SELECT username FROM admin WHERE username=? AND password=?");
+    $stmt = $conn->prepare("SELECT username FROM admin WHERE username=? AND password=?");
     $stmt->bind_param("ss",$username,$password);
     $stmt->execute();
     $stmt->bind_result($result);
     $stmt->fetch();
 
 
+    //$sql="SELECT username FROM admin WHERE username='$username' AND password='$password'";
+  //  $rs=$db->query($sql);
+
+  //  $count=mysqli_num_rows($rs);
+
+
     if(!empty($result)){
-          $_SESSION['admin_loggedin']= true;
+          $_SESSION['admin_loggedIn']= true;
 
           header("Location: ./../server/login.php");
           echo("logged in");
       }
       else {
           echo '<script type="text/javascript">alert("Invalid inputs. Please try again.");</script>';
-          $_SESSION['admin_loggedin'] = false;
+          $_SESSION['admin_loggedIn'] = false;
   }
 }
   $conn->close();
@@ -66,7 +69,11 @@ include 'header.php';
 
 <div class = "content-body">
 <h1>Admin</h1>
-
+<form class="admin" class = "form" action = "adminLogin.php" method = "post">
+    <input type="text" placeholder="User Name" name="username" required /></br>
+    <input type="password" placeholder="Password" name="password" required/>
+    <input type="submit" value="Log in" name="login" class="btn log-btn" />
+  </form>
 <div>
 <a href = "admin_users_button.php"><button class = "btn">Users</button></a>
 <a href = "admin_posts_button.php"><button class = "btn">Posts</button></a>
