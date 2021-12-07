@@ -112,9 +112,13 @@
         $comment_user = $row['username']; 
         $comment_time = $row['commentdate']; 
         
-
-        $sql2 = "SELECT email FROM users WHERE username = $comment_user";
+        
+        $sql2 = "SELECT * FROM users WHERE username = $comment_user";
         $result2 = mysqli_query($conn, $sql2);
+
+        echo $conn;
+        print_r($result2);
+
         $row2 = mysqli_fetch_assoc($result2);
         $email = $row2['email'];
 

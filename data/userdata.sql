@@ -57,10 +57,10 @@ CREATE TABLE `admin` (
 --
 
 CREATE TABLE `comment` (
-  `cid` int(11) NOT NULL,
+  `cid` int(25) NOT NULL,
   `body` varchar(400) NOT NULL,
   `postid` int(11) NOT NULL,
-  `username` varchar(15) NOT NULL,
+  `username` varchar(255) NOT NULL,
   `commentdate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
