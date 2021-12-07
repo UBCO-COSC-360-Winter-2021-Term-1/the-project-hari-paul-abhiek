@@ -73,7 +73,7 @@ CREATE TABLE `users` (
   `lastName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `pic` blob NOT NULL
+  `pic` bit NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE `users` ADD `userID` INT NOT NULL AUTO_INCREMENT , ADD UNIQUE (`userID`); 
@@ -136,7 +136,8 @@ ALTER TABLE `comment` ADD CONSTRAINT `postid` FOREIGN KEY (`postid`) REFERENCES 
 CREATE TABLE `userImages` (
   `userID` int(11) NOT NULL,
   `contentType` varchar(255) NOT NULL,
-  `image` blob NOT NULL
+  `image` blob NOT NULL,
+  `destination` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

@@ -17,10 +17,6 @@
 <body>
 
 <?php
-if(!isset($_COOKIE["PHPSESSID"]))
-{
-  session_start();
-}
     include 'header.php';
     $root = $_SERVER["DOCUMENT_ROOT"];
     include $root . '/the-project-hari-paul-abhiek/src/server/db_conn.php';
@@ -98,13 +94,12 @@ if(!isset($_COOKIE["PHPSESSID"]))
                   </div>';
         } 
     }
-
-    
 ?>
 
 <div class="container mb-5" id="ques">
         <h1 class="py-2">Discussions</h1>
-    <?php
+
+<?php
     
     $sql = "SELECT * FROM comment WHERE postid = $id"; 
     $result = mysqli_query($conn, $sql);
@@ -117,17 +112,14 @@ if(!isset($_COOKIE["PHPSESSID"]))
         $comment_time = $row['commentdate']; 
         
         
-        $sql2 = "SELECT * FROM users WHERE username = $comment_user";
+        $sql2 = "SELECT email FROM users WHERE `username` = '$comment_user'";
         $result2 = mysqli_query($conn, $sql2);
-
-        echo $conn;
-        print_r($result2);
 
         $row2 = mysqli_fetch_assoc($result2);
         $email = $row2['email'];
 
         echo '<div class="media my-3">
-            <img src="img/userdefault.png" width="54px" class="mr-3" alt="...">
+            <img src="./../client/img/profile.png" width="54px" class="mr-3" alt="...">
             <div class="media-body">
                <p class="font-weight-bold my-0">'. $email .' at '. $comment_time. '</p> '. $content . '
             </div>

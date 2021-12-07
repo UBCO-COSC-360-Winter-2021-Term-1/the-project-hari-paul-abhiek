@@ -86,25 +86,29 @@ mysqli_close($conn);
     //     mysqli_free_result($result);
     //     }
 
-    echo '<li class="nav-item">
-    <a class="nav-link" href="./../server/logout.php">Logout</a>
-  </li>
-  <li class="nav-item">
-  <a class="nav-link" href="./../client/profile.php"><figure><img src="img/profile.png" alt="Profile" style="width:2em"></figure></a>
-  <figcaption style="color:blue">'.$_SESSION['username'].'</figcaption>
-  </li>';
+      echo '<li class="nav-item">
+              <a class="nav-link" href="./../server/logout.php">Logout</a>
+            </li>';
+      if (isset($_SESSION['pic']) && $_SESSION['pic'] == 0){
+        echo '<li class="nav-item">
+                <a class="nav-link" href="./../client/profile.php"><figure><img src="img/profile.png" alt="Profile" style="width:2em"></figure></a>
+              <figcaption style="color:blue">'.$_SESSION['username'].'</figcaption>
+              </li>';
+      }else {
+        echo '<li class="nav-item">
+                <a class="nav-link" href="./../client/profile.php"><figure><img src="img/'.$_SESSION['destination'].'" alt="Profile" style="width:2em"></figure></a>
+              <figcaption style="color:blue">'.$_SESSION['username'].'</figcaption>
+              </li>';
+      }
+
+      if($admin_loggedin==true){
+        echo '<li class="nav-item">
+                <a class="nav-link" href="./../client/admin.php">Admin</a>
+              </li>';
+      }
+      echo '</ul>';
+    }
   
-        if($admin_loggedin==true){
-          echo '<li class="nav-item">
-          <a class="nav-link" href="./../client/admin.php">Admin</a>
-        </li>';
-        }
-        echo '</ul>';
-                       }
-  
-  
-  
-      
 ?>
 <?php
       if($loggedin == false){

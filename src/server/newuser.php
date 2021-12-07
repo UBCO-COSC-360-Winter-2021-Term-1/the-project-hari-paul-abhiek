@@ -3,7 +3,7 @@
     require 'validate.php';
 
     // Create variables for proper image path
-    $target_dir = "uploads/";
+    $target_dir = "./../client/img/";
     $target_file = $target_dir.basename($_FILES["userImage"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -32,21 +32,20 @@
         echo "Sorry, only JPG, PNG, & GIF files are allowed.";
         $uploadOk = 0;
     }
-    // Only allow images under 100kb (CHANGE THIS MAYBE? WE SHOULD RESTRICT TO CERTAIN SIZES)
-    if ($_FILES["userImage"]["size"] > 100000) {
+    // Only allow images under 1MB in size
+    if ($_FILES["userImage"]["size"] > 1000000) {
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
 
     // If image failed any of these requirements
     if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-    } 
-    else {
+        echo "Your file was not uploaded to temp.";
+        $pic = 0;
+    } else {
         if (move_uploaded_file($_FILES["userImage"]["tmp_name"], $target_file)) {
             echo "The file ". htmlspecialchars( basename( $_FILES["userImage"]["name"])). " has been uploaded to the temp location. <br>";
-        } else {
-            echo "Sorry, there was an error uploading your file.";
+            $pic = 1;
         }
     }
 
@@ -60,20 +59,19 @@
     } 
     else {
         // First SQL statement to insert new user
-        $sql = "INSERT INTO users (username, firstName, lastName, email, password) VALUES (?, ?, ?, ?, ?);";
+        $sql = "INSERT INTO users (username, firstName, lastName, email, password, pic) VALUES (?, ?, ?, ?, ?, ?);";
         
         if ($stmt = mysqli_prepare($conn, $sql))
         {
-            mysqli_stmt_bind_param($stmt, "sssss", $username, $firstname, $lastname, $email, $hash);
+            mysqli_stmt_bind_param($stmt, "sssssi", $username, $firstname, $lastname, $email, $hash, $pic);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
             $message = "User created successfully";
             echo "<script type='text/javascript'>alert('$message');</script>";
         }
         else
-        {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        }
+        
 
         // Second SQL statement to retrieve associated userID
         $sql2 = "SELECT userID FROM users WHERE username = ?";
@@ -97,7 +95,7 @@
         $imagedata = file_get_contents($target_file);
             // Store the contents of the files in memory in prep for upload
 
-        $sql3 = "INSERT INTO userimages (userID, contentType, image) VALUES (?, ?, ?);";
+        $sql3 = "INSERT INTO userimages (userID, contentType, image, destination) VALUES (?, ?, ?, ?);";
             // create a new statement to insert to insert the image into the table. Recall
             // that the ? is a placeholder to variable data
 
@@ -105,7 +103,7 @@
         mysqli_stmt_prepare($stmt3, $sql3); //register the query
 
         $null = NULL;
-        mysqli_stmt_bind_param($stmt3, "isb", $userID, $imageFileType, $null); 
+        mysqli_stmt_bind_param($stmt3, "isbs", $userID, $imageFileType, $null, $_FILES["userImage"]["name"]); 
 
 
         mysqli_stmt_send_long_data($stmt3, 2, $imagedata); 
@@ -117,6 +115,7 @@
         //close the statement
 
         echo "The file ". htmlspecialchars( basename( $_FILES["userImage"]["name"])). " has been uploaded to the server. <br>";
+
     }
 
     mysqli_close($conn);
