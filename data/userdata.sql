@@ -35,31 +35,24 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 
 
--- --------------------------------------------------------
---
-
 CREATE TABLE `admin` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
---
 
 INSERT INTO `admin` (`username`, `password`) VALUES  ('paul', 'paul'),('hari','hari'),('bist','bist'),('dvader','p@ssw0rd');
--- --password t
--- ('hari', 'e358efa489f58062f10dd7316b65649e'),
--- --password y
--- ('bist', '415290769594460e2e485922904f345d');
--- --------------------------------------------------------
+
 
 -- Table structure for table `comment`
 --
 
 CREATE TABLE `comment` (
-  `cid` int(25) NOT NULL,
+  `cid` int(25) NOT NULL AUTO_INCREMENT,
   `body` varchar(400) NOT NULL,
   `postid` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `commentdate` datetime NOT NULL
+  `commentdate` datetime NOT NULL,
+  PRIMARY KEY (`cid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -128,7 +121,7 @@ INSERT INTO `trails`(`trailName`, `description`) VALUES ('Powers Creek','Another
 
 --
 ALTER TABLE `comment` ADD CONSTRAINT `postid` FOREIGN KEY (`postid`) REFERENCES `trails` (`trailId`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+-- ALTER TABLE `comment` ADD  `cid` INT NOT NULL AUTO_INCREMENT, ADD UNIQUE (`cid`);
 
 -- Table structure for table `userImages`
 --
@@ -155,7 +148,7 @@ ALTER TABLE `userImages`
 
 --
 -- Constraints for dumped tables
---
+CREATE UNIQUE INDEX idxC ON comment(cid, postid);
 
 --
 -- Constraints for table `userImages`
