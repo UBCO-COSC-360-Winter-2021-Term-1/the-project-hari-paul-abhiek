@@ -122,13 +122,21 @@
         $row2 = mysqli_fetch_assoc($result2);
         $email = $row2['email'];
 
+        if (isset($_SESSION["profileImg"]))
+        {
+            $profileImg = $_SESSION["profileImg"];
+        }
+        else
+        {
+            $profileImg = "img/profile.png";
+        }
         echo '<div class="media my-3">
-            <img src="img/'.$_SESSION["profileImg"].'" width="54px" class="mr-3" alt="...">
+            <img src="img/'.$profileImg.'" width="54px" class="mr-3" alt="...">
             <div class="media-body">
                <p class="font-weight-bold my-0">'. $email .' on '. $comment_time. '</p> '. $content . '
             ';
 
-        if ($_SESSION['username'] == $comment_user){
+        if (isset($_SESSION['username']) && $_SESSION['username'] == $comment_user){
             echo '<a href="deleteComment.php?id1='.$cid.'&id2='.$id.'" style="float: right">Delete </a>';
             echo '<a href="editComment.php?id1='.$cid.'&id2='.$id.'" style="float: right">Edit </a>';
         }
