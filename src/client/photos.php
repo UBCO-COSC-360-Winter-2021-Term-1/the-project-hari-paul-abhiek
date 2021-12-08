@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="src/client/css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 
-
-
 </head>
 
 <body>
@@ -24,101 +22,59 @@
 
     <div class = "row">
     <div class="card mx-auto m-4" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="img/1.jpg" alt="Card image cap">
         <div class="card-body">
           <p class="card-text">User's Pic</p>
         </div>
     </div>
     <div class="card mx-auto m-4" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="img/2.jpg" alt="Card image cap">
         <div class="card-body">
           <p class="card-text">User's Pic</p>
         </div>
     </div>
     <div class="card mx-auto m-4" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="img/4.jpg" alt="Card image cap">
         <div class="card-body">
           <p class="card-text">User's Pic</p>
         </div>
     </div>
     <div class="card mx-auto m-4" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="img/5.jpg" alt="Card image cap">
         <div class="card-body">
           <p class="card-text">User's Pic</p>
         </div>
     </div>
-    <div class="card mx-auto m-4" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <p class="card-text">User's Pic</p>
-        </div>
-    </div>
+
     </div>  
 
-    <div class = "row">
-        <div class="card mx-auto m-4" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text">User's Pic</p>
-            </div>
-        </div>
-        <div class="card mx-auto m-4" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text">User's Pic</p>
-            </div>
-        </div>
-        <div class="card mx-auto m-4" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text">User's Pic</p>
-            </div>
-        </div>
-        <div class="card mx-auto m-4" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text">User's Pic</p>
-            </div>
-        </div>
-        <div class="card mx-auto m-4" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text">User's Pic</p>
-            </div>
-        </div>
-        </div>  
-
+    
         <div class = "row">
             <div class="card mx-auto m-4" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
+                <img class="card-img-top" src="img/9.jpg" alt="Card image cap">
                 <div class="card-body">
                   <p class="card-text">User's Pic</p>
                 </div>
             </div>
             <div class="card mx-auto m-4" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
+                <img class="card-img-top" src="img/8.jpg" alt="Card image cap">
                 <div class="card-body">
                   <p class="card-text">User's Pic</p>
                 </div>
             </div>
             <div class="card mx-auto m-4" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
+                <img class="card-img-top" src="img/7.jpg" alt="Card image cap">
                 <div class="card-body">
                   <p class="card-text">User's Pic</p>
                 </div>
             </div>
             <div class="card mx-auto m-4" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
+                <img class="card-img-top" src="img/6.jpg" alt="Card image cap">
                 <div class="card-body">
                   <p class="card-text">User's Pic</p>
                 </div>
             </div>
-            <div class="card mx-auto m-4" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">User's Pic</p>
-                </div>
-            </div>
+           
             </div>  
 
     <?php
