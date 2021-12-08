@@ -30,17 +30,21 @@
         <div>
         <img src="img/card-'.$trailId.'.jpg" width="54px" class="mr-3" alt="...">
         <div class="media-body">
-        <h5>'. $trail .'</h5>
+        <h5>'. $trailName .'</h5>
             <p> '.$desc.'</p>;
+            <a href="deleteTrail.php?id='.$trailId.'" style="float: right">Delete </a>;
+            <a href="editTrail.php?id='.$trailId.'" style="float: right">Edit </a>;
         </div> 
         </div> 
         </div>';
 
     }
    
-    $trailName=$_POST['trailname']; 
-    $desc=$_POST['desc']; 
+ 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $trailName=$_POST['trailname']; 
+        $desc=$_POST['desc']; 
+
         $sql = "INSERT INTO trails ( trailName, description) VALUES (?, ?)";
         if ($stmt = mysqli_prepare($conn, $sql))
         {

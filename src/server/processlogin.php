@@ -16,7 +16,7 @@ else{
         while ($row = mysqli_fetch_assoc($results2)) {
             $uname2 = $row['username'];
             $pass2 = $row['password'];
-            if($uname2 == $username && $password == $pass2){
+            if($uname2 == $username && $pass2 == $hash){
                 $_SESSION['admin_loggedIn'] = true;
                 $_SESSION['username'] = $uname2;
                 $_SESSION['password'] = $pass2;
@@ -24,7 +24,7 @@ else{
         }
 
         //--------------
-        $password = md5($password); //Need this line for newly created accounts
+        
 
         $sql = "SELECT * FROM users";
         $results = mysqli_query($conn, $sql);
@@ -35,7 +35,7 @@ else{
             $pic = $row['pic'];
             $uid = $row['userID'];
 
-            if($uname == $username && $password == $pass){
+            if($uname == $username && $pass == $hash){
                 
                 echo "Login Succesfull!";
                 $_SESSION['loggedIn'] = true;
