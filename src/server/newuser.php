@@ -104,7 +104,7 @@
         mysqli_stmt_prepare($stmt3, $sql3); //register the query
 
         $null = NULL;
-        mysqli_stmt_bind_param($stmt3, "isbs", $userID, $imageFileType, $null, $target_file); 
+        mysqli_stmt_bind_param($stmt3, "isbs", $userID, $imageFileType, $null, $_FILES["userImage"]["name"]); 
 
 
         mysqli_stmt_send_long_data($stmt3, 2, $imagedata); 

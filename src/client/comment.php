@@ -119,7 +119,7 @@
         $email = $row2['email'];
 
         echo '<div class="media my-3">
-            <img src="img/'.$_SESSION["profileImg"].'" width="54px" class="mr-3" alt="...">
+            <img src=img/"'.$_SESSION["profileImg"].'" width="54px" class="mr-3" alt="...">
             <div class="media-body">
                <p class="font-weight-bold my-0">'. $email .' on '. $comment_time. '</p> '. $content . '
             </div>
