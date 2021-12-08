@@ -67,6 +67,7 @@
 ?>
 
 <?php
+// We only deal with POST requests to ensure data is secure
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         //Insert into comment table
         $comment = $_POST['comment']; 
@@ -97,12 +98,15 @@
 ?>
 
 <div class="container mb-5">
-    <h1 class="py-2">Discussions</h1>
+    <h1 class="py-2">Trail Rider Discussions</h1>
 
 <?php
     
-    $sql = "SELECT * FROM comment WHERE postid = $id"; 
-    $result = mysqli_query($conn, $sql);
+    $sql = "SELECT * FROM comment WHERE postid = ?"; 
+    $prpstmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($prpstmt, "i", $id);
+    mysqli_stmt_execute($prpstmt);
+    $result = mysqli_stmt_get_result($prpstmt);
 
     while($row = mysqli_fetch_assoc($result)){
         
