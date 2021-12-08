@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli('localhost','webuser','P@ssw0rd','project');
+$conn = new mysqli('cosc360.ok.ubc.ca','webuser','P@ssw0rd','project');
 if($conn->connect_error){
    die("Connection failed");
  }else{
