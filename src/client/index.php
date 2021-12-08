@@ -93,6 +93,36 @@
             </div>
         </div>
         
+        <div class="col-sm-4">
+            <div class="p-3 border bg-light">
+            <nav>
+                <?php
+            require './../server/db_conn.php';
+
+// Gather all info on the comment table in the database for Admin's use
+$sql = "SELECT * FROM trails ORDER BY trailId DESC"; 
+$results = mysqli_query($conn, $sql);
+while($row = mysqli_fetch_assoc($results)){
+    $trailId = $row['trailId'];
+    $trailName = $row['trailName'];
+    $desc = $row['description'];
+    echo '<div class="media my-3">
+    <div>
+    <img src="img/card-'.$trailId.'.jpg" width="54px" class="mr-3" alt="...">
+    <div class="media-body">
+    <a href="comment.php?id=' . $trailId .' "><h5>'. $trailName .'</h5></a>
+    </div> 
+    </div> 
+    </div>';
+    
+
+}
+?>
+
+</nav>
+            </div>
+        </div>
+        
     </div>
 
     <?php include 'footer.php';?>
