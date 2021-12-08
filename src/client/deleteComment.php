@@ -16,6 +16,6 @@
         header("Location: comment.php?id=$postid");
         exit();
     }
-    
+    mysqli_close($conn);
     // header("Location: comment.php?id=$postid");
 ?>
