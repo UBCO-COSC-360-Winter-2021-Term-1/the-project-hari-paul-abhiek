@@ -92,9 +92,7 @@
 
             </div>
         </div>
-        <div class="col-sm-4">
-            <div class="p-3 border bg-light">Trail List</div>
-        </div>
+        
     </div>
 
     <?php include 'footer.php';?>
