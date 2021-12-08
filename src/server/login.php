@@ -33,6 +33,14 @@ include "./../client/header.php";
                 echo " <br>";
                 echo " <input type=\"submit\" value=\"Login\" class=\"btn btn-primary\">";
                 echo " </form>"; 
+                echo "<form method=\"post\" action=\"processforgot.php\" id=\"mainForm\" >";
+                echo " <br>";
+                echo "Email:<br>";
+                echo " <input type=\"text\" name=\"email\" id=\"email\" class=\"required\">";
+                echo " <br>";
+                echo " <br>";
+                echo " <input type=\"submit\" value=\"Forgot Password\" class=\"btn btn-primary\">";
+                echo " </form>"; 
              }
             // else{
             //     header('Location: ./../client/index.php');
