@@ -53,7 +53,7 @@
     $user2=$_SESSION['username'];
     $userID=$_SESSION['userID'];
         // First SQL statement to insert new user
-        $sql = "UPDATE `users` set `pic`=1";
+        $sql = "UPDATE `users` SET `pic`=1";
 
         // Second SQL statement to retrieve associated userID
         // $sql2 = "SELECT `userID` FROM `users` WHERE `username` = ?";
@@ -77,11 +77,18 @@
         $imagedata = file_get_contents($target_file);
             // Store the contents of the files in memory in prep for upload
 
-        $sql3 = "Update userimages set image= '$imagedata' where userID='$userID'";
+        $sql3 = "UPDATE userimages SET image= ? WHERE userID=?";
             // create a new statement to insert to insert the image into the table. Recall
             // that the ? is a placeholder to variable data
 
+        $stmt3 = mysqli_stmt_init($conn); //init prepared statement object
+        mysqli_stmt_prepare($stmt3, $sql3); //register the query
         
+        $null = NULL;
+        mysqli_stmt_bind_param($stmt3, "bi", $null, $userId); //bind the parameters
+        mysqli_stmt_send_long_data($stmt3, 0, $imagedata); 
+
+
         $result = mysqli_stmt_execute($stmt3) or die(mysqli_stmt_error($stmt3)); 
         // execute the statement and store the result in $result
 
@@ -89,6 +96,7 @@
         //close the statement
 
         $msg2 = "The file ". htmlspecialchars( basename( $_FILES["userImage"]["name"])). " has been uploaded to the server";
+        $_SESSION['profileImg'] = $_FILES["userImage"]["name"];
         echo "<script type='text/javascript'>alert('$msg2')
             window.location.href='./../client/index.php'</script>";
     //}

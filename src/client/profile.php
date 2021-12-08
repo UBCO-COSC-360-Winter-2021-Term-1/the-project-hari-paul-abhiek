@@ -66,9 +66,9 @@
 <br>
 <br>
 <br>
-                <form action="./../server/updatePicture.php" method="post">
+                <form action="./../server/updatePicture.php" method="post" enctype="multipart/form-data">
                 <input type='file' name='userImage' id='userImage' class='required'/>
-                <input type="submit" value="upload profile picture">
+                <input type="submit" value="Update Profile Picture">
                 </form>
             </div>
             <?php
