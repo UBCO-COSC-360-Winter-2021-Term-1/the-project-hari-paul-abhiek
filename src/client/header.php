@@ -29,8 +29,8 @@
     </li>
     <li class="nav-item ">
     <div class="dropdown">
-      <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
-        <a class="nav-link" href="./../client/trails.php">Trails</a>
+      <button class="dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+        <a class="nav-link" href="./../client/trails.php" style="color:black">Trails</a>
       </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li><a class="dropdown-item" href="trails.php"><b>View All Trails</b></a></li>
