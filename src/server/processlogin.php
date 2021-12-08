@@ -26,13 +26,14 @@ else{
         //--------------
         $password = md5($password);
 
-        $sql = "SELECT username, password, pic FROM users";
+        $sql = "SELECT * FROM users";
         $results = mysqli_query($conn, $sql);
 
         while ($row = mysqli_fetch_assoc($results)) {
             $uname = $row['username'];
             $pass = $row['password'];
             $pic = $row['pic'];
+            $uid = $row['userID'];
 
             if($uname == $username && $password == $pass){
                 
@@ -42,6 +43,14 @@ else{
                 $_SESSION['password'] = $pass;
                 $_SESSION['userID'] = $uid;
                 $_SESSION['pic'] = $pic;
+
+                if ($_SESSION['pic'] == 1) {
+                    $sql2 = "SELECT destination FROM userimages WHERE userID = $uid";
+                    $results2 = mysqli_query($conn, $sql2);
+                    $row = mysqli_fetch_assoc($results2);
+                    $_SESSION['profileImg'] = $row['destination'];
+                }
+
                 header('Location: ./../client/index.php');
                 break;
             }
@@ -52,13 +61,6 @@ else{
         } 
 
         mysqli_free_result($results);
-
-        if (isset($_SESSION['pic']) && $_SESSION['pic'] == 1) {
-            $sql2 = "SELECT destination FROM userimages WHERE userID = $uid";
-            $results2 = mysqli_query($conn, $sql2);
-            $row = mysqli_fetch_assoc($results2);
-            $_SESSION['destination'] = $row['destination'];
-        }
         mysqli_free_result($results2);    
         mysqli_close($conn);
     }
