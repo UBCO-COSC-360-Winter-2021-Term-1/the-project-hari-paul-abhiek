@@ -24,7 +24,7 @@ else{
         }
 
         //--------------
-        //$password = md5($password);
+        $password = md5($password); //Need this line for newly created accounts
 
         $sql = "SELECT * FROM users";
         $results = mysqli_query($conn, $sql);
