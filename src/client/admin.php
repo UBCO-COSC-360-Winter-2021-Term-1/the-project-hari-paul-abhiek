@@ -69,6 +69,7 @@ include 'header.php';
 
 <div>
 <a href = "allcomments.php"><button class = "btn">View all comments</button></a>
+<a href = "alltrails.php"><button class = "btn">View all trails</button></a>
 </div>
 
 </div>
