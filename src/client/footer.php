@@ -12,8 +12,8 @@ echo'
         <div class="col-md-6 mt-md-0 mt-3">
   
           <!-- Content -->
-          <h5 class="text-uppercase">Footer Content</h5>
-          <p>Here you can use rows and columns to organize your footer content.</p>
+          <h5 class="text-uppercase">Team Members</h5>
+          <p>Abhiek Bist | Haris Vidimlic | Paul Sciarpelletti</p>
   
         </div>
         <!-- Grid column -->
@@ -24,22 +24,6 @@ echo'
         <div class="col-md-3 mb-md-0 mb-3">
   
           <!-- Links -->
-          <h5 class="text-uppercase">Links</h5>
-  
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
-          </ul>
   
         </div>
         <!-- Grid column -->
@@ -52,16 +36,16 @@ echo'
   
           <ul class="list-unstyled">
             <li>
-              <a href="#!">Link 1</a>
+              <a href="./../client/index.php">Home</a>
             </li>
             <li>
-              <a href="#!">Link 2</a>
+              <a href="./../client/trails.php">Trails</a>
             </li>
             <li>
-              <a href="#!">Link 3</a>
+              <a href="./../client/photos.php">Phots</a>
             </li>
             <li>
-              <a href="#!">Link 4</a>
+              <a href="./../client/about.php">About us</a>
             </li>
           </ul>
   
