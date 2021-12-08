@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `admin` (`username`, `password`) VALUES  ('paul', 'paul'),('hari','hari'),('bist','bist'),('dvader','p@ssw0rd');
+
 
 
 -- Table structure for table `comment`
@@ -98,7 +98,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`username`);
-
+INSERT INTO `admin` (`username`, `password`) VALUES  ('paul', 'paul'),('hari','hari'),('bist','bist'),('dvader','p@ssw0rd');
 --
 -- Table structure for table `trails post`
 --
