@@ -15,33 +15,28 @@ include './../server/db_conn.php';
         }
     }
 
-    $sql = "SELECT email FROM `users`";
-    if ($result = mysqli_query($conn, $sql)) {
-      while ($row = mysqli_fetch_assoc($result)) {
-        $email = $row['email'];
-    }
-    mysqli_free_result($result);
-  }
-  
-
-
-
     //Search database for username
     $sqlname = "SELECT password FROM users WHERE email='$email'";
     if($result = mysqli_query($conn, $sqlname)){
 
         while($row = mysqli_fetch_assoc($result)){
-            $password=$row['password'];
+            $pass=$row['password'];
         }
         mysqli_free_result($result);
     }
-        $txt = "COSC 360 recover password";
-        
-           mail($email,$txt,$password);
-           echo("<h1>unsd</h1>");
-        
-       // mysqli_free_result($result);
-    
-    mysqli_close($conn);
+
+    $txt = "COSC 360 recover password";
+
+    $newpass = "temp";
+
+    if(isset($pass)){  
+    mail($email,$txt,$password);
+    echo("<h1>Recovery email sent to </h1>");
+    echo($email);
+    }
+     else{
+     echo("<h1>email not sent! please go back and try again</h1>");}
+  
+     mysqli_close($conn);
         //closes the prepared statement
 ?>
