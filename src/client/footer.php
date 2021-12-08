@@ -1,6 +1,6 @@
 <?php
 echo'
- <footer class="page-footer font-small bg-light pt-4">
+ <footer  class="page-footer font-small bg-light pt-4">
 
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">

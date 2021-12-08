@@ -15,3 +15,6 @@
 .dropdown-toggle{
     color: black;
 }
+body{
+    background-image:  linear-gradient( rgba(0, 128, 0, 0.8),rgba(0, 128, 0, 0.1));
+}

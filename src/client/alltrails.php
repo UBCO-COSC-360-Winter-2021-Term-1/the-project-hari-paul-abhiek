@@ -9,7 +9,7 @@
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css' rel='stylesheet' />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="src/client/css/main.css">
+  <link rel="stylesheet" href="./../client/css/main.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
@@ -30,18 +30,21 @@
         <div>
         <img src="img/card-'.$trailId.'.jpg" width="54px" class="mr-3" alt="...">
         <div class="media-body">
-        <h5>'. $trailName.'</h5>
-            <p> '.$desc.'</p>;
+        <h5>'. $trailName .'</h5>
+            <p> '.$desc.'</p>
+            <a href="deleteTrail.php?id='.$trailId.'" style="float: right">Delete </a>
+            <a href="editTrail.php?id='.$trailId.'" style="float: right">Edit </a>
         </div> 
         </div> 
         </div>';
 
     }
-    
-
-    $trailName=$_POST['trailname']; 
-    $desc=$_POST['desc']; 
+   
+ 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $trailName=$_POST['trailname']; 
+        $desc=$_POST['desc']; 
+
         $sql = "INSERT INTO trails ( trailName, description) VALUES (?, ?)";
         if ($stmt = mysqli_prepare($conn, $sql))
         {
