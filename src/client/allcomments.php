@@ -51,17 +51,16 @@
         $row4 = mysqli_fetch_assoc($result4);
         $destination = $row4['destination'];
 
-
-    }
-
-    echo '<div class="media my-3">
+        echo '<div class="media my-3">
             <img src="img/'.$destination.'" width="54px" class="mr-3" alt="...">
             <div class="media-body">
                 <p class="font-weight-bold my-0">'.$comment_user.'('.$email.')'.' on '.$comment_time.' post:'.$trail.'</p> '. $content . '
                 <a href="deleteComment.php?id1='.$cid.'&id2='.$post.'" style="float: right">Delete </a>;
                 <a href="editComment.php?id1='.$cid.'&id2='.$post.'" style="float: right">Edit </a>;
             </div> 
-    </div>';
+            </div>';
+    }
+
     mysqli_close($conn);
 ?>
 <?php include 'footer.php';?>
