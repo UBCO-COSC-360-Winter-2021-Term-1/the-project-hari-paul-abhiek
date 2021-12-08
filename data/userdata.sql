@@ -75,7 +75,7 @@ ALTER TABLE `users` ADD `userID` INT NOT NULL AUTO_INCREMENT , ADD UNIQUE (`user
 --
 
 INSERT INTO `users` (`username`, `firstName`, `lastName`, `email`, `password`) VALUES
-('dvader', 'darth', 'vader', 'vader@dark.force', 'p@ssw0rd');
+('dvader', 'darth', 'vader', 'vader@dark.force', '0f359740bd1cda994f8b55330c86d845');
 
 --
 -- Indexes for dumped tables
@@ -98,7 +98,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`username`);
-INSERT INTO `admin` (`username`, `password`) VALUES  ('paul', 'paul'),('hari','hari'),('bist','bist'),('dvader','p@ssw0rd');
+INSERT INTO `admin` (`username`, `password`) VALUES  ('paul', '391012e2a58dcc9faefac784709ab990'),('hari','a9bcf1e4d7b95a22e2975c812d938889'),('bist','4448614945686a6837e62ea69ad29869'),('dvader','0f359740bd1cda994f8b55330c86d845');
 --
 -- Table structure for table `trails post`
 --

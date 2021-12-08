@@ -30,14 +30,15 @@
         <div>
         <img src="img/card-'.$trailId.'.jpg" width="54px" class="mr-3" alt="...">
         <div class="media-body">
-        <h5>'. $trail .'</h5>
+        <h5>'. $trailName.'</h5>
             <p> '.$desc.'</p>;
         </div> 
         </div> 
         </div>';
 
     }
-   
+    
+
     $trailName=$_POST['trailname']; 
     $desc=$_POST['desc']; 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -47,17 +48,20 @@
             mysqli_stmt_bind_param($stmt, "ss", $trailName, $desc);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
-            $showAlert = true;
+            
+            
+            //$showAlert = true;
         }
-    }
+    
+}
     mysqli_close($conn);
-
+    
     
 ?>
 
 
 
-<form action="allTrails.php" method="post">
+<form action="alltrails.php" method="post">
 <input type="text" id="trailname" name="trailname" placeholder="add trail name HERE">
 <input type="text" id="desc" name="desc" placeholder="add trail description HERE">
                     <input type="submit" value="add trail">

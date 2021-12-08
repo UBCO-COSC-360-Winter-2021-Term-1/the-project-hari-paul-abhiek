@@ -10,7 +10,7 @@
 
 
     // Check if image file is an actual image or fake image
-    if(isset($_POST["submit"])) {
+    if(isset($_GET["submit"])) {
         $check = getimagesize($_FILES["userImage"]["tmp_name"]);
         if($check !== false) {
             echo "File is an image - " . $check["mime"] . ".";
@@ -19,6 +19,17 @@
             echo "File is not an image.";
             $uploadOk = 0;
         }
+    }
+    elseif (isset($_GET["submit"])) {
+            $check = getimagesize($_FILES["userImage"]["tmp_name"]);
+            if($check !== false) {
+                echo "File is an image - " . $check["mime"] . ".";
+                $uploadOk = 1;
+            } else {
+                echo "File is not an image.";
+                $uploadOk = 0;
+            }
+        
     }
 
     // Check if file already exists

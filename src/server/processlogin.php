@@ -9,22 +9,25 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true)
     header('Location: ./../client/index.php');
 else{
         //-----------admin part
-
+        //$username = $_POST['password'];
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $password = $_POST['password'];
         $sql2 = "SELECT username, password FROM admin";
         $results2 = mysqli_query($conn, $sql2);
 
         while ($row = mysqli_fetch_assoc($results2)) {
             $uname2 = $row['username'];
             $pass2 = $row['password'];
-            if($uname2 == $username && $password == $pass2){
+            if($uname2 === $username && md5($password) === $pass2){
                 $_SESSION['admin_loggedIn'] = true;
                 $_SESSION['username'] = $uname2;
                 $_SESSION['password'] = $pass2;
             }
         }
+        
 
         //--------------
-        //$password = md5($password);
+        
 
         $sql = "SELECT * FROM users";
         $results = mysqli_query($conn, $sql);
@@ -35,7 +38,7 @@ else{
             $pic = $row['pic'];
             $uid = $row['userID'];
 
-            if($uname == $username && $password == $pass){
+            if($uname === $username && md5($password) === $pass){
                 
                 echo "Login Succesfull!";
                 $_SESSION['loggedIn'] = true;

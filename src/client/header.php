@@ -41,7 +41,7 @@ if ($result = mysqli_query($conn, $sql)){
   while ($row = mysqli_fetch_assoc($result)) {
     $trail = $row['trailName'];
     $tid = $row['trailId'];
-    echo'<li><a class="dropdown-item" href="comment.php?id='.$tid.'">'.$trail.'</a></li>';
+    echo'<li><a class="dropdown-item" href="./../client/comment.php?id='.$tid.'">'.$trail.'</a></li>';
   }
 mysqli_free_result($result);
 }
