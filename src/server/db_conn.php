@@ -1,9 +1,9 @@
 <?php
 
-$host = "localhost";
+$host = "cosc360.ok.ubc.ca";
 $database = "project";
-$user = "webuser";
-$password = "P@ssw0rd";
+$user = "60253655";
+$password = "60253655";
 
 $conn = mysqli_connect($host, $user, $password, $database);
 
