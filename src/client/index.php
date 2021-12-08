@@ -117,6 +117,7 @@ while($row = mysqli_fetch_assoc($results)){
     
 
 }
+                mysqli_close($conn);
 ?>
 
 </nav>
