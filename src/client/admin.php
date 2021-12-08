@@ -68,8 +68,7 @@ include 'header.php';
 <h1>Admin</h1>
 
 <div>
-<a href = "admin_users_button.php"><button class = "btn">Users</button></a>
-<a href = "admin_posts_button.php"><button class = "btn">Posts</button></a>
+<a href = "allcomments.php"><button class = "btn">View all comments</button></a>
 </div>
 
 </div>
