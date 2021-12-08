@@ -1,9 +1,5 @@
 <?php
-  $connString = "mysql:host=localhost;dbname=project";
-  $user = "webuser";
-  $pass = "P@ssw0rd";
-  $pdo = new PDO($connString, $user, $pass);
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ 
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,7 +22,6 @@
     if (password != confirmPassword){
       e.preventDefault();
       alert("Passwords do not match.");
-      // Why aren't these working? Onload function but they should be loaded on submit!?
 
       makeRed($("#password"));
       makeRed($("#password-check"));
@@ -40,6 +35,7 @@
 <body>
     <?php
     include 'header.php';
+    include './../server/db_conn.php';
     if (isset($_SESSION['loggedIn'])) {
         $session_uname = $_SESSION['loggedIn'];
         $uname = "";
@@ -47,75 +43,31 @@
         $lname = "";
         $email = "";
         $pass = "";
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $uname = $_POST["uname"] ?? "";
-            $lname = $_POST["lname"] ?? "";
-            $fname = $_POST["fname"] ?? "";
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $uname = $_POST["username"] ?? "";
+            $lname = $_POST["lastname"] ?? "";
+            $fname = $_POST["firstname"] ?? "";
             $email = $_POST["email"] ?? "";
-            $pass = $_POST["pass"] ?? "";
+            $pass = $_POST["password"] ?? "";
+            $user=$_SESSION['username'];
         }
-        //echo $uname . ", " . $fname . ", " . $lname . ", " . $email . ", " . $pass;
-        if ($uname != "") {
-            if (strlen($uname) > 0 && strlen($uname) <= 15) {
-                $sql = "SELECT * FROM users WHERE username=?";
-                $rslt = $pdo->prepare($sql);
-                $rslt->execute(array($uname));
-                if ($rslt->rowCount() == 0) {
-                    $sql = "UPDATE users SET username=? WHERE username=?";
-                    $rslt = $pdo->prepare($sql);
-                    $rslt->execute(array($uname, $session_uname));
-                    $_SESSION["loggedIn"] = $uname;
-                }
-            }
-        }
-        if ($fname != "") {
-            if (strlen($fname) > 0 && strlen($fname) <= 20) {
-                $sql = "UPDATE users SET firstName=? WHERE username=?";
-                $rslt = $pdo->prepare($sql);
-                $rslt->execute(array($fname, $session_uname));
-            }
-        }
-        if ($lname != "") {
-            if (strlen($lname) > 0 && strlen($lname) <= 20) {
-                $sql = "UPDATE users SET lastName=? WHERE username=?";
-                $rslt = $pdo->prepare($sql);
-                $rslt->execute(array($lname, $session_uname));
-            }
-        }
-        if ($email != "") {
-            if (strlen($email) > 0 && strlen($email) <= 320 && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $sql = "SELECT * FROM users WHERE email=?";
-                $rslt = $pdo->prepare($sql);
-                $rslt->execute(array($email));
-                if ($rslt->rowCount() == 0) {
-                    $sql = "UPDATE users SET email=? WHERE username=?";
-                    $rslt = $pdo->prepare($sql);
-                    $rslt->execute(array($email, $session_uname));
-                }
-            }
-        }
-        if ($pass != "") {
-            if (strlen($pass) > 0 && strlen($pass) <= 30) {
-                $sql = "UPDATE users SET password=? WHERE username=?";
-                $rslt = $pdo->prepare($sql);
-                $rslt->execute(array($pass, $session_uname));
-            }
-        }
-        $sql = "SELECT * FROM users WHERE username=?";
-        $rslt = $pdo->prepare($sql);
-        $rslt->execute(array($session_uname));
-        while ($row = $rslt->fetch()) {
-            $uname = $row['username'];
-            $fname = $row['firstName'];
-            $lname = $row['lastName'];
-            $email = $row['email'];
-            $pass = $row['password'];
-        }
+        //echo '$uname . ", " . $fname . ", " . $lname . ", " . $email . ", " . $pass;';
+        $sql= "UPDATE `users` SET `firstName` = '$fname',
+        `username` ='$uname', `lastName` = '$lname', `email` = '$email', `password`='$pass'
+        WHERE `username` = '$user'";
+    ?>
+    <?php
+    $result = mysqli_query($conn, $sql);
+    $conn -> close();
+    if (isset($_POST['submit']))
+    {  
+    header("Location: ./../client/index.php");
+    }
+    
     ?>
 
-<?php
-echo'
-<form method="post" action="editAccount.php" id="mainForm" enctype="multipart/form-data">
+
+<form method="post" action="editAccount.php" class="main_wrapper_editAccount" enctype="multipart/form-data">
   First Name:<br>
   <input type="text" name="firstname" id="firstname" class="required">
   <br>
@@ -123,7 +75,7 @@ echo'
   <input type="text" name="lastname" id="lastname" class="required">
   <br>
   Username:<br>
-  <input type="text" name="username" id="username" class="required"><?php echo $uname; ?>
+  <input type="text" name="username" id="username" class="required">
   <br>
   email:<br>
   <input type="text" name="email" id="email" class="required">
@@ -133,16 +85,15 @@ echo'
   <br>
   Re-enter Password:<br>
   <input type="password" name="password-check" id="password-check" class="required">
-  <br>
-  <input type="file" name="userImage" id="userImage" class="required"/>
+
   <br><br>
-  <input type="submit" value="Update Account" onsubmit="checkPasswordMatch()">
+  <input type="submit" name="submit" value="Update Account" onsubmit="checkPasswordMatch()">
 </form>'
-?>
+
 
     <?php
     } else {
-        echo "<a href='./../server/login.php'>Must be logged in to edit account, click here to login</a>";
+    echo "<a href='./../server/login.php'>Must be logged in to edit account, click here to login</a>";
     }
     include 'footer.php';
     ?>
