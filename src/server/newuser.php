@@ -16,28 +16,19 @@
 <link rel="stylesheet" href="./../client/css/main.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript">
-    function checkPasswordMatch(e)
-{
-  var password = document.getElementById('password');
-  var passwordCheck = document.getElementById('password-check');
+function checkPasswordMatch(e) {
+    var password = $("#password").val();
+    var confirmPassword = $("#password-check").val();
+    if (password != confirmPassword){
+      e.preventDefault();
+      alert("Passwords do not match.");
+      // Why aren't these working? Onload function but they should be loaded on submit!?
 
-  console.log("checking passwords");
-  if (password.value === passwordCheck.value)
-  {
-      //submit
-      //don't bother to hash at this point -> just send and store in hashed form in db
-      console.log("Passwords match!");
-      e.submit();
-  }
-  else {
-      console.log("passwords don't match!");
-      alert("Passwords do not match!");
-      //clear and make req
-      makeRed(password);
-      makeRed(passwordCheck);
-  }
-  e.preventDefault();
-}
+      makeRed($("#password"));
+      makeRed($("#password-check"));
+
+    } 
+  };
 </script>
 </head>
 
