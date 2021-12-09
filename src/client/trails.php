@@ -18,9 +18,9 @@
 
 <body>
   <?php
-  $root = $_SERVER["DOCUMENT_ROOT"];
+  
   include 'header.php';
-  include $root . '/the-project-hari-paul-abhiek/src/server/db_conn.php';
+  include './../server/db_conn.php';
   ?>
 
   <div class="container">

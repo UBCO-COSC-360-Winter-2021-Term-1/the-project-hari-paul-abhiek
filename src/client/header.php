@@ -116,7 +116,7 @@ mysqli_close($conn);
               <button class="btn btn-primary" inline="true" ><a href="./../server/login.php" style="color:white">Login</a></button>
             </li>
             <li class="nav-item"> 
-              <button class="btn btn-primary" inline="true" ><a href="./../server/newuser.html" style="color:white">Sign Up</a></button>
+              <button class="btn btn-primary" inline="true" ><a href="./../server/newuser.php" style="color:white">Sign Up</a></button>
             </li>
             </ul> ';
       }

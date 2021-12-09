@@ -1,135 +1,74 @@
-<?php
-    session_start();
-    require 'validate.php';
+<!DOCTYPE html>
 
-    // Create variables for proper image path
-    $target_dir = "./../client/img/";
-    $target_file = $target_dir.basename($_FILES["userImage"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+<html>
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Okanagan Bike Trails</title>
+<script type="text/javascript" src="./../client/js/main.js"></script>
+<script type="text/javascript" src="./../client/validate.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css' rel='stylesheet' />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="./../client/css/main.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+    function checkPasswordMatch(e)
+{
+  var password = document.getElementById('password');
+  var passwordCheck = document.getElementById('password-check');
 
-    // Check if image file is an actual image or fake image
-    if(isset($_GET["submit"])) {
-        $check = getimagesize($_FILES["userImage"]["tmp_name"]);
-        if($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
-            $uploadOk = 1;
-        } else {
-            echo "File is not an image.";
-            $uploadOk = 0;
-        }
-    }
-    elseif (isset($_GET["submit"])) {
-            $check = getimagesize($_FILES["userImage"]["tmp_name"]);
-            if($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
-                $uploadOk = 1;
-            } else {
-                echo "File is not an image.";
-                $uploadOk = 0;
-            }
-        
-    }
+  console.log("checking passwords");
+  if (password.value === passwordCheck.value)
+  {
+      //submit
+      //don't bother to hash at this point -> just send and store in hashed form in db
+      console.log("Passwords match!");
+      e.submit();
+  }
+  else {
+      console.log("passwords don't match!");
+      alert("Passwords do not match!");
+      //clear and make req
+      makeRed(password);
+      makeRed(passwordCheck);
+  }
+  e.preventDefault();
+}
+</script>
+</head>
 
-    // Check if file already exists
-    if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
-        $uploadOk = 0;
-    }
-
-    // Allow only certain file formats
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif" ) {
-        echo "Sorry, only JPG, PNG, & GIF files are allowed.";
-        $uploadOk = 0;
-    }
-    // Only allow images under 1MB in size
-    if ($_FILES["userImage"]["size"] > 1000000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
-
-    // If image failed any of these requirements
-    if ($uploadOk == 0) {
-        echo "Your file was not uploaded to temp.";
-        $pic = 0;
-    } else {
-        if (move_uploaded_file($_FILES["userImage"]["tmp_name"], $target_file)) {
-            $msg = "The file ". htmlspecialchars( basename( $_FILES["userImage"]["name"])). " has been uploaded to the temp location";
-            echo "<script type='text/javascript'>alert('$msg');</script>";
-            $pic = 1;
-        }
-    }
-
-    //Check if username exists
-    $sqlname = "SELECT * FROM users WHERE username='$username'";
-    $query = mysqli_query($conn, $sqlname);
-
-    if (mysqli_num_rows($query) > 0) {
-        $name_error = "Sorry... username already taken";
-        echo "<script type='text/javascript'>alert('$name_error');</script>";
-    } 
-    else {
-        // First SQL statement to insert new user
-        $sql = "INSERT INTO users (username, firstName, lastName, email, password, pic) VALUES (?, ?, ?, ?, ?, ?);";
-        
-        if ($stmt = mysqli_prepare($conn, $sql))
-        {
-            mysqli_stmt_bind_param($stmt, "sssssi", $username, $firstname, $lastname, $email, $hash, $pic);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_close($stmt);
-            $message = "User created successfully";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-        }
-        else
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        
-
-        // Second SQL statement to retrieve associated userID
-        $sql2 = "SELECT userID FROM users WHERE username = ?";
-
-        if ($stmt2 = mysqli_prepare($conn, $sql2))
-        {
-            mysqli_stmt_bind_param($stmt2, "s", $username);
-            mysqli_stmt_execute($stmt2);
-            mysqli_stmt_bind_result($stmt2, $userID);
-            mysqli_stmt_fetch($stmt2);
-            mysqli_stmt_store_result($stmt2);
-            mysqli_stmt_close($stmt2);
-
-        }
-        else
-        {
-            echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
-        }
-        
-        // Third SQL statement to insert image path
-        $imagedata = file_get_contents($target_file);
-            // Store the contents of the files in memory in prep for upload
-
-        $sql3 = "INSERT INTO userimages (userID, contentType, image, destination) VALUES (?, ?, ?, ?);";
-            // create a new statement to insert to insert the image into the table. Recall
-            // that the ? is a placeholder to variable data
-
-        $stmt3 = mysqli_stmt_init($conn); //init prepared statement object
-        mysqli_stmt_prepare($stmt3, $sql3); //register the query
-
-        $null = NULL;
-        mysqli_stmt_bind_param($stmt3, "isbs", $userID, $imageFileType, $null, $_FILES["userImage"]["name"]); 
+<body>
+<?php include './../client/header.php';?>
 
 
-        mysqli_stmt_send_long_data($stmt3, 2, $imagedata); 
+<form method="post" action="processnewuser.php" id="mainForm" enctype="multipart/form-data">
+  First Name:<br>
+  <input type="text" name="firstname" id="firstname" class="required">
+  <br>
+  Last Name:<br>
+  <input type="text" name="lastname" id="lastname" class="required">
+  <br>
+  Username:<br>
+  <input type="text" name="username" id="username" class="required">
+  <br>
+  email:<br>
+  <input type="text" name="email" id="email" class="required">
+  <br>
+  Password:<br>
+  <input type="password" name="password" id="password" class="required">
+  <br>
+  Re-enter Password:<br>
+  <input type="password" name="password-check" id="password-check" class="required">
+  <br>
+  <input type='file' name='userImage' id='userImage' class='required'/>
+  <br><br>
+  <input type="submit" value="Create New User" onsubmit="checkPasswordMatch()">
+</form>
 
-        $result = mysqli_stmt_execute($stmt3) or die(mysqli_stmt_error($stmt3)); 
-        // execute the statement and store the result in $result
-
-        mysqli_stmt_close($stmt3); 
-        //close the statement
-
-        $msg2 = "The file ". htmlspecialchars( basename( $_FILES["userImage"]["name"])). " has been uploaded to the server";
-        echo "<script type='text/javascript'>alert('$msg2')
-            window.location.href='./../client/index.php'</script>";
-    }
-
-    mysqli_close($conn);
-?>
+<?php include './../client/footer.php';?>
+</body>
+</html>
