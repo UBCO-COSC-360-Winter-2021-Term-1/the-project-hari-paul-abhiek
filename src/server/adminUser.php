@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli('cosc360.ok.ubc.ca','60253655','60253655','project');
+$conn = new mysqli('cosc360.ok.ubc.ca','60253655','60253655','db_60253655');
 if($conn->connect_error){
    die("Connection failed");
  }else{

@@ -1,7 +1,7 @@
 <?php
 
 $host = "cosc360.ok.ubc.ca";
-$database = "project";
+$database = "db_60253655";
 $user = "60253655";
 $password = "60253655";
 
