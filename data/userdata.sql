@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS trails;
-DROP TABLE IF EXISTS userImages;
+DROP TABLE IF EXISTS userimages;
 DROP TABLE IF EXISTS users;
 
 -- phpMyAdmin SQL Dump
@@ -123,10 +123,10 @@ INSERT INTO `trails`(`trailName`, `description`) VALUES ('Powers Creek','Another
 ALTER TABLE `comment` ADD CONSTRAINT `postid` FOREIGN KEY (`postid`) REFERENCES `trails` (`trailId`) ON DELETE CASCADE ON UPDATE CASCADE;
 -- ALTER TABLE `comment` ADD  `cid` INT NOT NULL AUTO_INCREMENT, ADD UNIQUE (`cid`);
 
--- Table structure for table `userImages`
+-- Table structure for table `userimages`
 --
 
-CREATE TABLE `userImages` (
+CREATE TABLE `userimages` (
   `userID` int(11) NOT NULL,
   `contentType` varchar(255) NOT NULL,
   `image` blob NOT NULL,
@@ -140,9 +140,9 @@ CREATE TABLE `userImages` (
 
 
 --
--- Indexes for table `userImages`
+-- Indexes for table `userimages`
 --
-ALTER TABLE `userImages`
+ALTER TABLE `userimages`
   ADD PRIMARY KEY (`userID`),
   ADD KEY `userID` (`userID`);
 
@@ -150,9 +150,9 @@ ALTER TABLE `userImages`
 -- Constraints for dumped tables
 
 --
--- Constraints for table `userImages`
+-- Constraints for table `userimages`
 --
-ALTER TABLE `userImages`
+ALTER TABLE `userimages`
   ADD CONSTRAINT `userimages_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
