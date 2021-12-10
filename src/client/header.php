@@ -96,7 +96,7 @@ mysqli_close($conn);
               </li>';
       }else {
         echo '<li class="nav-item">
-                <a class="nav-link" href="./../client/profile.php"><figure><img src="img/'.$_SESSION['profileImg'].'" alt="Profile" style="width:2em"></figure></a>
+                <a class="nav-link" href="./../client/profile.php"><figure><img src="uploads/'.$_SESSION['profileImg'].'" alt="Profile" style="width:2em"></figure></a>
               <figcaption style="color:blue">'.$_SESSION['username'].'</figcaption>
               </li>';
       }
