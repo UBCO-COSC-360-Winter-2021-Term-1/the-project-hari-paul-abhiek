@@ -3,7 +3,7 @@
     require 'validate.php';
 
     // Create variables for proper image path
-    $target_dir = "./../client/img/";
+    $target_dir = "./../client/uploads/";
     $target_file = $target_dir.basename($_FILES["userImage"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
